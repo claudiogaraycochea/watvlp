@@ -1,0 +1,36 @@
+.message-button {
+	bottom: 15px;
+	right: 15px;
+	width: auto;
+	background-color: #FFFFFF;
+	border-radius: 10px;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+.message-button button {
+	width: 100%;
+	height: 100%;
+	padding: 10px 32px;
+}
+.icon-messages-out {
+	background-image: url(../../../../assets/images/icon-messages-out.svg);
+	height: 32px;
+	width: 32px;
+}
+.message-button button:hover .icon-messages-out {
+	background-image: url(../../../../assets/images/icon-messages-out-white.svg);
+}
+.message-button button .counter-circle {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	background: #FE7B7B;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	position: absolute;
+	right: 0;
+	height: 32px;
+	width: 32px;
+	top: -16px;
+}

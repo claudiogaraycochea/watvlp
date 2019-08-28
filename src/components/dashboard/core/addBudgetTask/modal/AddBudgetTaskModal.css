@@ -1,0 +1,36 @@
+.budget-item-list {
+	max-height: 180px;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.budget-item-list .budget-item {
+	border: 1px solid red;
+}
+
+.budget-item-list .menu {
+	padding-right: 10px;
+}
+
+.budget-task-selected-wrapper {
+	margin-top: 10px;
+}
+
+.budget-task-item .icon-add-sec {
+	position: relative;
+	left: 10px;
+	height: 24px;
+	width: 24px;
+}
+
+.budget-task-item .col {
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	justify-content: flex-start;
+}
+
+.budget-task-item .form-group {
+	padding: 0;
+	margin: 0;
+}

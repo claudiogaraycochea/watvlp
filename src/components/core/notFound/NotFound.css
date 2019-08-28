@@ -1,0 +1,12 @@
+.not-found-container {
+	max-height: calc(100vh - 100px);
+	overflow: hidden;
+	height: 100%;
+}
+
+.not-found-image {
+	width: 128px;
+	height: 128px;
+	background-image: url(../../../assets/images/icon-error-404.svg);
+	background-size: contain;
+}

@@ -1,0 +1,262 @@
+
+.login-wrapper {
+  text-align: center;
+  font-size: 18px;
+}
+
+.main-container {
+  width: 100%;
+}
+
+.row {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 900px;
+}
+
+header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 80px;
+  padding: 0 20px;
+  align-items: center;
+  display: flex !important;
+  align-items: center;
+}
+
+.hero-wrapper {
+  padding-top: 80px;
+  height: 100vh;
+/*  background-image: url(../../../assets/images/bg-hero.svg);
+  background-size: cover;*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  text-align: center;
+}
+
+.hero-title {
+  display: flex;
+  align-items: center;  
+  font-size: 28px;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+  padding: 0 40px;
+  height: 55%;
+}
+
+.hero-image-wrapper {
+  flex: 1 1 auto;
+  display: flex;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.hero-image {
+  background-image: url(../../../assets/images/hero-image.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
+  width: 100%;
+}
+
+.bg-waves-green {
+  background-image: url(../../../assets/images/bg-waves-green.svg);
+  background-size: cover;
+}
+
+.bg-waves-purple {
+  background-image: url(../../../assets/images/bg-waves-purple.svg);
+  background-size: cover;
+}
+
+.bg-waves-blue {
+  background-image: url(../../../assets/images/bg-waves-blue.svg);
+  background-size: cover;
+}
+
+.bg-waves-yellow {
+  background-image: url(../../../assets/images/bg-waves-yellow.svg);
+  background-size: cover;
+}
+
+.bg-waves-transparent {
+  background-image: url(../../../assets/images/bg-waves-transparent.svg);
+  background-size: cover;
+}
+
+.bg-trianglify-purple {
+  background-image: url(../../../assets/images/bg-trianglify-purple.svg);
+  background-size: cover;
+}
+
+.bg-trianglify-blue {
+  background-image: url(../../../assets/images/bg-trianglify-blue.svg);
+  background-size: cover;
+}
+
+.logo-webandtv {
+  vertical-align: middle;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 200px;
+  height: 32px;
+  background-image: url(../../../assets/images/logo-webandtv.svg);
+}
+
+.box-tile {
+  padding: 40px;
+  text-align: center;
+  position: relative;
+}
+
+.box-tile .image {
+  margin-bottom: 20px;
+}
+
+.box-tile-content {
+  position: relative;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+}
+
+.box-tile-layout {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  border-radius: 10px;
+}
+
+.box-tile-bg {
+  background-image: url(../../../assets/images/bg-waves-transparent.svg);
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  border-radius: 10px;
+  opacity: 0.2;
+}
+
+.box .blue {
+	background-color: #3687ea;
+	color: #ffffff;
+}
+
+.box .yellow {
+	background-color: #ffbc00;
+	color: #ffffff;
+}
+
+.box .purple {
+	background-color: #6e00ff;
+	color: #ffffff;
+}
+
+.box .red {
+	background-color: #e80359;
+	color: #ffffff;
+}
+
+.box .orange {
+	background-color: #ff7600;
+	color: #ffffff;
+}
+
+.box .green {
+	background-color: #00d27b;
+	color: #ffffff;
+}
+
+.section {
+  padding: 80px 0;  
+}
+
+.intro {
+  font-size: 26px;
+}
+
+h1, h2, h3, h4 {
+  font-weight: bold;
+}
+
+h1, h2, h3, h4 {
+  margin: 40px 0;
+}
+
+p {
+  margin: 40px 0;
+}
+
+.login-wrapper h2 {
+  font-size: 38px;
+}
+
+.hight-light {
+  color: #e80359;
+}
+
+.text-white {
+  color: #ffffff;
+}
+
+.text-white h1, .text-white h2, .text-white h3 {
+  color: #ffffff;
+}
+
+.slider-control-centerleft, .slider-control-centerright {
+  display: none;
+}
+
+.slider-control-bottomcenter {
+  position: absolute;
+  bottom: -30px !important;
+}
+
+.slider-list li {
+  padding: 20px;
+}
+
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+	body {
+		font-size: 15px;
+  }
+  
+  .hero-title {
+    font-size: 40px;
+    height: 32%;
+    font-weight: bolder;
+    max-width: 800px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }  
+
+  .section {
+    padding: 120px 0;
+  }
+
+	.box {
+		padding: 20px;
+	}
+}

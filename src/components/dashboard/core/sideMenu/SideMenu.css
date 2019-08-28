@@ -1,0 +1,104 @@
+.side-menu-header {
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.side-menu .menu-items .item {
+  display: flex;
+  padding: 20px 40px;
+  font-size: 14px;
+  align-items: center;
+}
+
+.side-menu [class^="icon-"].space,
+.side-menu [class*=" icon-"].space {
+  margin-right: 15px;
+}
+
+.side-menu .menu-items .item {
+  color: #FFFFFF;
+  text-decoration: none;
+  border-left: 5px solid transparent;
+}
+
+.side-menu .menu-items .item:hover,.side-menu .menu-items .item:active, .side-menu .menu-items .item.active {
+  color: #FFFFFF;
+  text-decoration: none;
+  border-left: 5px solid #087AFF;
+}
+.side-menu {
+  position: relative;
+}
+
+.sidebar_footer {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  color: #E5E5E5;
+}
+
+.toggler {
+  position: absolute;
+  right: 0;
+  background: rgba(245,245,245,0.2);
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+  cursor: pointer;
+}
+
+/*common style layout for dashboard*/
+
+.main-app {
+  position: relative;
+  display: flex;
+  width: 100%;
+  background: #FAFAFA;
+  min-height: 100%;
+  height: auto;
+}
+
+.side-menu {
+  background-color: #1A2943;
+  color: #FFFFFF;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 80%;
+  z-index: 2000;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s;
+  transform: translate3d(0, 0, 0);
+}
+
+.side-menu.minimized {
+  transform: translate3d(-120%, 0, 0);
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  width: -webkit-fill-available;
+}
+
+.container {
+  flex: 1 1 auto;
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .side-menu {
+    position: relative;
+    width: 280px;
+    height: unset;
+  }
+
+  .side-menu.minimized {
+    transform: translate3d(0, 0, 0);
+  }
+
+  .main-container {
+    flex: 1;
+  }
+
+}
