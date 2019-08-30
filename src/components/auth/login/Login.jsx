@@ -7,7 +7,6 @@ import {
 	Col,
 	Form,
 	Button,
-	Alert,
 } from 'react-bootstrap';
 
 import imageDownloadApp from '../../../assets/images/image-download-app.png';
@@ -16,7 +15,6 @@ import imageBuy from '../../../assets/images/image-buy.png';
 
 import './Login.css';
 import Carousel from 'nuka-carousel';
-import Footer from '../../core/footer/Footer';
 
 class Login extends React.Component {
 	constructor(props) {
@@ -82,7 +80,7 @@ class Login extends React.Component {
 			<Col xs={12} md={4}>
 				<div className='box purple box-tile'>
 					<div className='box-tile-content'>
-						<div className='image'><i className={`${icon} medium`}></i></div>
+						<div className='image'><i className={`${icon} large`}></i></div>
 						<div>
 							{text}
 						</div>
@@ -127,45 +125,55 @@ class Login extends React.Component {
 	};
 
 	render() {
-		const { errorMessage, boxTiles } = this.state;
+		const { boxTiles } = this.state;
 		return (
 			<div className='login-wrapper'>
 				<header>
 					<div className='logo-webandtv'></div>
 				</header>
-				<div className='hero-wrapper bg-waves-purple'>
+				<div className='hero-wrapper bg-trianglify-purple'>
+
 					<div className='hero-title'>
-						IMPULSA EL CONSUMO INSTANTANEO DE TUS TELEVIDENTES
+						<div class=''>
+							<h1 class='mega montserrat bold'>
+								Impulsa el <span class='color-emphasis-1'>consumo </span>
+								instantáneo <span class='color-emphasis-1'>de tus televidentes.</span>
+							</h1>
+						</div>
 					</div>
+
 					<div className='hero-image-wrapper'>
 						<div className='hero-image' />
 					</div>
 				</div>
 				<div className='single'>
 					<div className='main-container'>
-						<Row className='section'>
+						<Row className='section none-bottom'>
 							<Col>
-								<div className='intro'>WebAnd.TV es una plataforma web que enfocada a generar mas ingresos economicos y entretenimiento para tu canal o programa de tv</div>
+								<div className='intro'>Webandtv es la plataforma web creada para que tu canal de TV reciba mas ingresos económicos y brinde mas entretenimiento a tus televidentes.</div>
 							</Col>
 						</Row>
-						<Row>
+						<Row className='section'>
 							{ boxTiles.map((boxTileItem) => this.boxTile(boxTileItem)) }
 						</Row>
-						<div>
-							<Row className='section'>
+						<div className='bg-dark'>
+							<Row className='section text-white'>
 								<Col>
-									Y lo mas importante... estamos formando la red mas grande de
-									televidentes con un sistema estandar de micropagos donde con 
-									un simple click destinan dinero a tu canal.
+									<h3>
+										Y lo mas importante... estamos formando <span className='color-emphasis-1'>la red mas grande de
+										televidentes con un sistema estandar de micropagos y pagos</span> donde con 
+										un simple click destinan dinero a tu canal.
+									</h3>
 								</Col>
 							</Row>							
 						</div>
 						<div className='bg-trianglify-purple'>
 							<Row className='section text-white'>
 								<Col>
-									<h2>COMO FUNCIONA?</h2>
+									<h2>Como funciona?</h2>
 									<h3 className='hight-light'>
-										Es super simple, compartes el link de tu canal y se cargaran micro-websites sincronizados con tu transimision
+										{`Es super simple, compartes el link WebAnd.TV de tu canal
+										y se cargaran microwebsites sincronizados con tu transimision`}
 									</h3>
 									<p>
 										Tu o tu equipo de desarrollo puede crear micro-websites especialmente desarrollados para compras directas, obtejer mas interaccion, etc.
@@ -183,8 +191,9 @@ class Login extends React.Component {
 						</div>
 						<Row className='section'>
 							<Col>
-								<h2>GRATIS!</h2>
-								<h3 className='hight-light'>Para tu canal o programa de TV</h3>
+								<h2>
+									Gratis!	<span className='hight-light'>para tu canal o programa de TV</span>
+								</h2>
 								<p>
 									WebAnd.TV genera ingresos economicos adicionales a tu canal o programa de TV, de estos, obtienes el 95% y el 5% restante es para el mantenimiento de nuestra plataforma. No tienes que invertir nada.
 								</p>

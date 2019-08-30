@@ -119,7 +119,7 @@ export const routes = [
 	{
 		id: 2,
 		exact: true,
-		path: '/',
+		path: '/home',
 		Component: Login,
 		Layout: FullLayout,
 		Access: 'Public',

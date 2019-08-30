@@ -21,7 +21,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 				? <Component {...props} /> : (
 					<Redirect
 						to={{
-							pathname: '/',
+							pathname: 'home/',
 							state: {
 								from: props.location,
 							},
@@ -34,10 +34,13 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 
 const initRoutes = () => (
 	<BrowserRouter>
-		<Switch>
+		<Switch 
+			basename={'/home'}
+		>
 			{routes.map((route) => (
 				(route.Access === 'Private') ? (
 					<PrivateRoute
+						path={`${process.env.PUBLIC_URL}/`}
 						key={route.id}
 						exact={route.exact}
 						path={route.path}
@@ -49,6 +52,7 @@ const initRoutes = () => (
 					/>
 				) : (
 					<Route
+						path={`${process.env.PUBLIC_URL}/`}
 						key={route.id}
 						exact={route.exact}
 						path={route.path}
