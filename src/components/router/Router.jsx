@@ -40,7 +40,6 @@ const initRoutes = () => (
 			{routes.map((route) => (
 				(route.Access === 'Private') ? (
 					<PrivateRoute
-						path={`${process.env.PUBLIC_URL}/`}
 						key={route.id}
 						exact={route.exact}
 						path={route.path}
@@ -52,7 +51,6 @@ const initRoutes = () => (
 					/>
 				) : (
 					<Route
-						path={`${process.env.PUBLIC_URL}/`}
 						key={route.id}
 						exact={route.exact}
 						path={route.path}

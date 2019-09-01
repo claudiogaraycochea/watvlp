@@ -32,32 +32,32 @@ class Login extends React.Component {
 		const boxTiles =[
 			{
 				icon: 'icon-hashtag',
-				text: 'Haz que participen con tus #hashtags con un simple click',
+				text: 'Haz que tus televidentes participen con tus #hashtags a través de un simple click.',
 				bgColor: 'purple',
 			},
 			{
 				icon: 'icon-sale',
-				text: 'Vende productos de tus anunciantes con botones de compra intantanea',
+				text: 'Impulsa la venta productos de tus anunciantes con botones de compra intantanea.',
 				bgColor: 'blue',
 			},
 			{
 				icon: 'icon-increase-revenue',
-				text: 'Recibe nuevos ingresos economicos a traves de anuncios online',
+				text: 'Recibe importantes ingresos economicos a traves de un nuevo sistema de anuncios online.',
 				bgColor: 'red',
 			},
 			{
 				icon: 'icon-micro-payment',
-				text: 'Ofrece un sistema de micropagos rapidos',
+				text: 'Ofrece un sistema de micropago rápido similar a SMS pero online.',
 				bgColor: 'orange',
 			},
 			{
 				icon: 'icon-realtime',
-				text: 'Haz que participen en tiempo real con tu contenido',
+				text: 'Adapta tu canal al televidente de hoy con contenido interactivo.',
 				bgColor: 'green',
 			},
 			{
 				icon: 'icon-idea',
-				text: 'Descubre y crea nuevas oportunidades economicas y de entretenminento',
+				text: 'Crea nuevas oportunidades economicas y de entretenimiento.',
 				bgColor: 'yellow',
 			},
 		];
@@ -150,7 +150,7 @@ class Login extends React.Component {
 					<div className='main-container'>
 						<Row className='section none-bottom'>
 							<Col>
-								<div className='intro'>Webandtv es la plataforma web creada para que tu canal de TV reciba mas ingresos económicos y brinde mas entretenimiento a tus televidentes.</div>
+								<div className='intro'>WebAnd.TV es la plataforma web creada para que tu canal de TV reciba más ingresos económicos y brinde más entretenimiento a tus televidentes.</div>
 							</Col>
 						</Row>
 						<Row className='section'>
@@ -159,24 +159,38 @@ class Login extends React.Component {
 						<div className='bg-dark'>
 							<Row className='section text-white'>
 								<Col>
-									<h3>
-										Y lo mas importante... estamos formando <span className='color-emphasis-1'>la red mas grande de
-										televidentes con un sistema estandar de micropagos y pagos</span> donde con 
-										un simple click destinan dinero a tu canal.
-									</h3>
+									<h3>Nuevos Ingresos</h3>
+									<p>
+										{`No pierdas la posibilidad de formar parte de `}
+										<span className='color-emphasis-1'>la red más importante de televidentes con un unico sistema de micropagos y pagos.
+										</span> Donde con un simple click se destinan nuevos ingresos a tu canal y anunciantes.
+									</p>
 								</Col>
 							</Row>							
 						</div>
 						<div className='bg-trianglify-purple'>
 							<Row className='section text-white'>
 								<Col>
-									<h2>Como funciona?</h2>
+									<h2>¿Cómo funciona?</h2>
 									<h3 className='hight-light'>
-										{`Es super simple, compartes el link WebAnd.TV de tu canal
-										y se cargaran microwebsites sincronizados con tu transimision`}
+										Es muy simple, comparte el link WebAnd.TV de tu canal
+										y se cargaran microwebsites sincronizados con tu contenido.
 									</h3>
 									<p>
-										Tu o tu equipo de desarrollo puede crear micro-websites especialmente desarrollados para compras directas, obtejer mas interaccion, etc.
+										WebAnd.TV tiene un proposito diferente la App de tu canal o tu pagina web. 
+										Se trata de la red de televidentes formada por canales de TV
+										con un unico sistema de pagos y entretenimiento.
+									</p>
+									<p>
+										Nuestra plataforma incremente el numero de descargas de la App de tu canal y anunciantes, 
+										mas participacion en tus redes sociales, mas ingresos y entretenimiento. 
+										Sin dudas un cambio positivo para que descubras.
+									</p>
+									<p>
+										A traves de un sencillo panel de control puedes agregar 
+										microwebsites creados por ti, tu equipo de desarrollo, marketing o comercial. 
+										Estos se muestran a tus televidentes coordinados con tu 
+										contenido estimulando a compras instantaneas y mas entretenimiento.
 									</p>
 									<Carousel>
 										<img src={imageBuy} alt='WebAndTV Buy'/>
@@ -205,7 +219,7 @@ class Login extends React.Component {
 									<Col>
 										<h2>COMIENZA AHORA!</h2>
 										<p>
-											Es super simple, compartes el link de tu canal y se cargaran micro-websites sincronizados con tu transimision.
+											Registra tu canal de TV en WebAnd.TV y accede al panel de control. Es facil, rapido y totalmente gratis para tu canal de TV.
 										</p>
 									</Col>								
 								</Row>
@@ -213,15 +227,47 @@ class Login extends React.Component {
 									<Col>
 										<Form>
 											<Form.Group controlId='exampleForm.ControlInput1'>
-												<Form.Label>Email address</Form.Label>
-												<Form.Control type='email' placeholder='name@example.com' />
+												<Form.Label>Canal de TV</Form.Label>
+												<Form.Control type='text' placeholder='name@example.com' />
+											</Form.Group>
+											<Form.Group controlId='exampleForm.ControlInput1'>
+												<Form.Label>Country</Form.Label>
+												<Form.Control type='text' placeholder='name@example.com' />
+											</Form.Group>
+											<Form.Group controlId='exampleForm.ControlInput1'>
+												<Form.Label>Estado/Provincia</Form.Label>
+												<Form.Control type='text' placeholder='' />
 											</Form.Group>
 											<Form.Group controlId='exampleForm.ControlInput1'>
 												<Form.Label>City</Form.Label>
+												<Form.Control type='text' placeholder='Ciudad' />
+											</Form.Group>
+											<Form.Group controlId='exampleForm.ControlInput1'>
+												<Form.Label>Nombre</Form.Label>
+												<Form.Control type='text' placeholder='Nombre' />
+											</Form.Group>
+											<Form.Group controlId='exampleForm.ControlInput1'>
+												<Form.Label>Apellido</Form.Label>
+												<Form.Control type='text' placeholder='Apellido' />
+											</Form.Group>
+											<Form.Group controlId='exampleForm.ControlInput1'>
+												<Form.Label>Telefono</Form.Label>
+												<Form.Control type='text' placeholder='ej: +1 000000000' />
+											</Form.Group>
+											<Form.Group controlId='exampleForm.ControlInput1'>
+												<Form.Label>Email</Form.Label>
 												<Form.Control type='email' placeholder='name@example.com' />
 											</Form.Group>
+											<Form.Group controlId='exampleForm.ControlInput1'>
+												<Form.Label>Password</Form.Label>
+												<Form.Control type='password' placeholder='Mayor a 8 caracteres' />
+											</Form.Group>
+											<Form.Group controlId='exampleForm.ControlInput1'>
+												<Form.Label>Repetir Password</Form.Label>
+												<Form.Control type='password' placeholder='Repite tu password' />
+											</Form.Group>
 											<div>
-												<Button variant='secondary'>Create</Button>
+												<Button variant='secondary'>Crear perfil de mi canal</Button>
 											</div>
 										</Form>
 									</Col>								
