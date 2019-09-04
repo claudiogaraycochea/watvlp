@@ -47,7 +47,7 @@ class Login extends React.Component {
 			},
 			{
 				icon: 'icon-micro-payment',
-				text: 'Ofrece un sistema de micropago rápido similar a SMS pero online.',
+				text: 'Ofrece un sistema de micropago mucho más rápido que por SMS.',
 				bgColor: 'orange',
 			},
 			{
@@ -78,7 +78,7 @@ class Login extends React.Component {
 		const { icon, text, bgColor } = boxTileItem;
 		return (
 			<Col xs={12} md={4}>
-				<div className='box purple box-tile'>
+				<div className='box box-tile'>
 					<div className='box-tile-content'>
 						<div className='image'><i className={`${icon} large`}></i></div>
 						<div>
@@ -153,6 +153,15 @@ class Login extends React.Component {
 								<div className='intro'>WebAnd.TV es la plataforma web creada para que tu canal de TV reciba más ingresos económicos y brinde más entretenimiento a tus televidentes.</div>
 							</Col>
 						</Row>
+						<Row>
+							<Col>
+								<p>
+									Ofrecemos la herramienta que tu canal necesita para generar los estimulos a 
+									los televidentes de hoy, que van desde mas participacion en tus redes sociales,
+									mas descargas de la App de tu canal, mas ingresos para ti y tus anunciantes.
+								</p>
+							</Col>
+						</Row>
 						<Row className='section'>
 							{ boxTiles.map((boxTileItem) => this.boxTile(boxTileItem)) }
 						</Row>
@@ -161,8 +170,7 @@ class Login extends React.Component {
 								<Col>
 									<h3>Nuevos Ingresos</h3>
 									<p>
-										{`No pierdas la posibilidad de formar parte de `}
-										<span className='color-emphasis-1'>la red más importante de televidentes con un unico sistema de micropagos y pagos.
+										Forma parte de <span className='color-emphasis-1'>la red más importante de televidentes con un único sistema de micropagos y pagos.
 										</span> Donde con un simple click se destinan nuevos ingresos a tu canal y anunciantes.
 									</p>
 								</Col>
@@ -176,16 +184,6 @@ class Login extends React.Component {
 										Es muy simple, comparte el link WebAnd.TV de tu canal
 										y se cargaran microwebsites sincronizados con tu contenido.
 									</h3>
-									<p>
-										WebAnd.TV tiene un proposito diferente la App de tu canal o tu pagina web. 
-										Se trata de la red de televidentes formada por canales de TV
-										con un unico sistema de pagos y entretenimiento.
-									</p>
-									<p>
-										Nuestra plataforma incremente el numero de descargas de la App de tu canal y anunciantes, 
-										mas participacion en tus redes sociales, mas ingresos y entretenimiento. 
-										Sin dudas un cambio positivo para que descubras.
-									</p>
 									<p>
 										A traves de un sencillo panel de control puedes agregar 
 										microwebsites creados por ti, tu equipo de desarrollo, marketing o comercial. 
