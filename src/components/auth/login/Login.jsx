@@ -79,7 +79,7 @@ class Login extends React.Component {
 		return (
 			<Col xs={12} md={4}>
 				<div className='box box-tile'>
-					<div className='box-tile-content'>
+					<div className='box-tile-content animate-pop-in delay-2'>
 						<div className='image'><i className={`${icon} large`}></i></div>
 						<div>
 							{text}
@@ -129,11 +129,11 @@ class Login extends React.Component {
 		return (
 			<div className='login-wrapper'>
 				<header>
-					<div className='logo-webandtv'></div>
+					<div className='logo-webandtv animate-pop-in delay-1'></div>
 				</header>
 				<div className='hero-wrapper bg-trianglify-purple'>
 
-					<div className='hero-title'>
+					<div className='hero-title animate-pop-in delay-2'>
 						<div class=''>
 							<h1 class='mega montserrat bold'>
 								Impulsa el <span class='color-emphasis-1'>consumo </span>
@@ -143,7 +143,9 @@ class Login extends React.Component {
 					</div>
 
 					<div className='hero-image-wrapper'>
-						<div className='hero-image' />
+						<div className='hero-image animate-pop-in delay-1'>
+							<div className='hero-image-smartphone animate-pop-in delay-3'></div>
+						</div>
 					</div>
 				</div>
 				<div className='single'>
