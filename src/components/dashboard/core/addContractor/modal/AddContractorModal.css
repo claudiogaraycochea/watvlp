@@ -1,0 +1,28 @@
+.contractor-list {
+	max-height: 180px;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.contractor-list .user-project .menu {
+	padding-right: 10px;
+}
+
+.assignee-selected-wrapper {
+	margin-top: 10px;
+}
+
+.assignee-selected-wrapper .assignee-item {
+	background-color: #EEF2F5;
+	border-radius: 30px;
+	padding: 8px 20px;
+	margin-right: 10px;
+	margin-bottom: 2px;
+	width: fit-content;
+	display: inline-block;
+}
+
+.assignee-item .icon-remove-sec {
+	position: relative;
+	left: 10px;
+}

@@ -1,0 +1,113 @@
+/*message body */
+/*left*/
+.container-box {
+	clear: both;
+	position: relative;
+	margin: 0 24px;
+	width: 75%;
+}
+.container-box .arrow {
+	width: 18px;
+	height: 25px;
+	overflow: hidden;
+	position: absolute;
+	float: left;
+	top: 15px;
+	left: -15px;
+	display: none;
+}
+.container-box .arrow .outer {
+	width: 0;
+	height: 0;
+	border-right: 20px solid #13D2B7;
+	border-top: 0 solid transparent;
+	border-bottom: 20px solid transparent;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.container-box .arrow .inner {
+	width: 0;
+	height: 0;
+	border-right: 20px solid #13D2B7;
+	border-top: 0 solid transparent;
+	border-bottom: 20px solid transparent;
+	position: absolute;
+	top: 0;
+	left: 2px;
+}
+.container-box .message-body {
+	float: left;
+	height: auto;
+	color: #fff;
+	background-color: #13D2B7;
+	border: 1px solid transparent;
+	padding: 20px 15px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-o-border-radius: 10px;
+	border-radius: 10px;
+}
+
+.container-box.right .arrow {
+	width: 18px;
+	height: 25px;
+	overflow: hidden;
+	position: absolute;
+	float: right;
+	top: 15px;
+	right: -15px;
+	left: 100%;
+	display: none;
+}
+.container-box.right .arrow .outer {
+	width: 0;
+	height: 0;
+	border-left: 20px solid #F3F3F3;
+	border-top: 0 solid transparent;
+	border-bottom: 20px solid transparent;
+	position: absolute;
+	top: 0;
+	right: 2px;
+}
+.container-box.right .arrow .inner {
+	width: 0;
+	height: 0;
+	border-left: 20px solid #F3F3F3;
+	border-top: 0 solid transparent;
+	border-bottom: 20px solid transparent;
+	position: absolute;
+	top: 0;
+	left: -2px;
+}
+.container-box.right .message-body {
+	float: right;
+	width: auto;
+	height: auto;
+	color: #012360;
+	background-color: #F3F3F3;
+	border: 1px solid transparent;
+	padding: 20px 15px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-o-border-radius: 10px;
+	border-radius: 10px;
+}
+
+.container-box .message-body p {
+	margin: 0;
+}
+
+.thread {
+	padding-bottom: 15px;
+}
+.thread .message-container:not(:first-child) .image {
+	visibility: hidden;
+}
+.thread .message-container:first-child .arrow, .thread .message-container:first-child .image {
+	display: block;
+}
+.thread .message-container:not(:first-child), .thread .message-container:not(:first-child) .arrow {
+	padding-top: 0 !important;
+	padding-bottom: 4px !important;
+}

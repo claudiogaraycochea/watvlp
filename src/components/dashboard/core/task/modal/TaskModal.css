@@ -1,0 +1,5 @@
+.assignee-list {
+	max-height: 100px;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
