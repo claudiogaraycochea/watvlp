@@ -111,7 +111,7 @@ class Login extends React.Component {
 						</div>
 					</div>
 					<div className={`box-tile-layout ${bgColor}`}></div>
-					<div className='box-tile-bg'></div>
+					{/*<div className='box-tile-bg'></div>*/}
 				</div>
 			</Col>
 		);
@@ -184,12 +184,11 @@ class Login extends React.Component {
 								<Col>
 								
 									<div>
-										<h3>Nuevos Ingresos</h3>
-										
-											<p>
-												Forma parte de <span className='color-emphasis-1'>la red más importante de televidentes con un único sistema de micropagos y pagos.
-												</span> Donde con un simple click se destinan nuevos ingresos a tu canal y anunciantes.
-											</p>
+										<h3 className='section animate-pop-in delay-2'>Nuevos Ingresos</h3>									
+										<p className='section animate-pop-in delay-3'>
+											Forma parte de <span className='color-emphasis-1'>la red más importante de televidentes con un único sistema de micropagos y pagos.
+											</span> Donde con un simple click se destinan nuevos ingresos a tu canal y anunciantes.
+										</p>
 										
 									</div>
 								
@@ -320,7 +319,7 @@ class Login extends React.Component {
 					<div className='logo-webandtv animate-pop-in delay-1'></div>
 				</header>
 				
-				<div className='hero-wrapper bg-waves-purple'>
+				<div className='hero-wrapper bg-trianglify-purple'>
 
 					<div className='hero-title'>
 						<ScrollOverPack always='true'>
@@ -331,8 +330,8 @@ class Login extends React.Component {
 						</ScrollOverPack>
 					</div>
 
-					<div className='hero-image-wrapper'>
-						<div className='hero-image aimante-pop-in delay-1'>
+					<div className='hero-image-wrapper '>
+						<div className='hero-image animante-pop-in delay-1'>
 							<div className='hero-image-smartphone animate-pop-in delay-2'></div>
 						</div>
 					</div>
@@ -361,14 +360,14 @@ class Login extends React.Component {
 							</Row>
 						</ScrollOverPack>
 						<ScrollOverPack always='true'>
-							<div>		
+							<div className='bg-dark text-white animate-pop-in delay-1'>		
 								<Row className='section'>
 									<Col>
 										<div>
-											<div className='animate-pop-in delay-1'>
+											<div className='animate-pop-in delay-2'>
 												<h3>Nuevos Ingresos</h3>
 											</div>
-											<div className='animate-pop-in delay-2'>
+											<div className='animate-pop-in delay-3'>
 												Forma parte de <span className='color-emphasis-1'>la red más importante de televidentes con un único sistema de micropagos y pagos.
 												</span> Donde con un simple click se destinan nuevos ingresos a tu canal y anunciantes.
 											</div>
@@ -412,7 +411,7 @@ class Login extends React.Component {
 									<h2 className='animate-pop-in delay-2'>
 										Gratis!	<span className='hight-light'>para tu canal o programa de TV</span>
 									</h2>
-									<div className='animate-pop-in delay-2'>
+									<div className='animate-pop-in delay-3'>
 										WebAnd.TV genera ingresos economicos adicionales a tu canal o programa de TV, de estos, obtienes el 95% y el 5% restante es para el mantenimiento de nuestra plataforma. No tienes que invertir nada.
 									</div>
 								</Col>
@@ -425,14 +424,14 @@ class Login extends React.Component {
 									<Col>
 									<Row>
 										<Col>
-											<h2>COMIENZA AHORA!</h2>
-											<p>
+											<h2 className='animate-pop-in delay-2'>COMIENZA AHORA!</h2>
+											<p className='animate-pop-in delay-3'>
 												Registra tu canal de TV en WebAnd.TV y accede al panel de control. Es facil, rapido y totalmente gratis para tu canal de TV.
 											</p>
 										</Col>								
 									</Row>
 									<Row>
-										<Col>
+										<Col className='animate-pop-in delay-4'>
 											<Form>
 												<Form.Group>
 													<Form.Label>Canal de TV</Form.Label>
