@@ -13,11 +13,18 @@ import {
 import imageDownloadApp from '../../../assets/images/image-download-app.png';
 import imageVote from '../../../assets/images/image-vote.png';
 import imageBuy from '../../../assets/images/image-buy.png';
+import imageChatNow from '../../../assets/images/image-chat-now.png';
+import imageTVBuy from '../../../assets/images/image-tv-buy.png';
+import imageVoteMovies from '../../../assets/images/image-vote-movies.png';
+import imageMore from '../../../assets/images/image-more.png';
+import imageBuyCinema from '../../../assets/images/image-buy-cinema.png';
+import imageVoteOppinion from '../../../assets/images/image-vote-oppinion.png';
+import imageReaction from '../../../assets/images/image-reaction.png';
 
 import './Login.css';
 import Carousel from 'nuka-carousel';
 
-const ScrollOverPack = ScrollAnim.OverPack;
+const ScrollOverPack = 'div'; //ScrollAnim.OverPack;
 ScrollAnim.scrollScreen.init({ loop: true });
 
 class Login extends React.Component {
@@ -29,9 +36,8 @@ class Login extends React.Component {
 			password: '',
 			errorMessage: null,
 			boxTiles: [],
-			loginWrapper: 0,
+			isTop: true,
 		};
-		this.updateDimensions = this.updateDimensions.bind(this);
 	}
 
 	componentWillMount() {
@@ -39,42 +45,35 @@ class Login extends React.Component {
 			{
 				icon: 'icon-hashtag',
 				text: 'Haz que tus televidentes participen con tus #hashtags a través de un simple click.',
-				bgColor: 'purple',
+				bgColor: 'white',
 			},
 			{
 				icon: 'icon-sale',
 				text: 'Impulsa la venta productos de tus anunciantes con botones de compra intantanea.',
-				bgColor: 'blue',
+				bgColor: 'white',
 			},
 			{
 				icon: 'icon-increase-revenue',
 				text: 'Recibe importantes ingresos economicos a traves de un nuevo sistema de anuncios online.',
-				bgColor: 'red',
+				bgColor: 'white',
 			},
 			{
 				icon: 'icon-micro-payment',
 				text: 'Ofrece un sistema de micropago mucho más rápido que por SMS.',
-				bgColor: 'orange',
+				bgColor: 'white',
 			},
 			{
 				icon: 'icon-realtime',
 				text: 'Adapta tu canal al televidente de hoy con contenido interactivo.',
-				bgColor: 'green',
+				bgColor: 'white',
 			},
 			{
 				icon: 'icon-idea',
 				text: 'Crea nuevas oportunidades economicas y de entretenimiento.',
-				bgColor: 'yellow',
+				bgColor: 'white',
 			},
 		];
-		this.updateDimensions();
 		this.setState({boxTiles});
-	}
-
-	componentDidMount() {
-		const loginWrapper = document.getElementById('main-container').clientHeight+500;
-		window.addEventListener("resize", this.updateDimensions);
-		this.setState({loginWrapper: loginWrapper});
 	}
 
 	componentWillReceiveProps(prevProps) {
@@ -86,24 +85,20 @@ class Login extends React.Component {
 		}
 	}
 
-	updateDimensions() {
-		const loginWrapper = 0;
-		this.setThisDimensions(loginWrapper);
-	}
-
-	setThisDimensions(loginWrapper) {
-		this.setState({loginWrapper});
-	}
-
-	componentWillUnmount() {
-		window.removeEventListener("resize", this.updateDimensions);
-	}
+  componentDidMount() {
+    document.addEventListener('scroll', () => {
+      const isTop = window.scrollY < 100;
+      if (isTop !== this.state.isTop) {
+        this.setState({ isTop })
+      }
+    });
+  }
 
 	boxTile = (boxTileItem) => {
 		const { icon, text, bgColor } = boxTileItem;
 		return (
 			<Col xs={12} md={4}>
-				<div className='box box-tile animate-pop-in delay-1'>
+				<div className='box-tile animate-pop-in delay-1'>
 					<div className='box-tile-content'>
 						<div className='image animate-pop-in delay-1'><i className={`${icon} large`}></i></div>
 						<div className='animate-pop-in delay-2'>
@@ -154,235 +149,94 @@ class Login extends React.Component {
 		this.setState({ password: event.target.value });
 	};
 
-	preLoadLogin = () => {
-		const { boxTiles } = this.state;
-		return (
-			<div className='single'>
-				<div id='main-container' className='main-container'>
-					<div className='scroll-anim'>
-						<Row className='section none-bottom'>
-							<Col>
-								<div className='intro animate-pop-in delay-1'>WebAnd.TV es la plataforma web creada para que tu canal de TV reciba más ingresos económicos y brinde más entretenimiento a tus televidentes.</div>
-								<div className='animate-pop-in delay-2'>
-									<p>
-										Ofrecemos la herramienta que tu canal necesita para generar los estimulos a 
-										los televidentes de hoy, que van desde mas participacion en tus redes sociales,
-										mas descargas de la App de tu canal, mas ingresos para ti y tus anunciantes.
-									</p>
-								</div>
-							</Col>
-						</Row>
-					</div>
-					<div className='scroll-anim'>
-						<Row className='section'>
-							{ boxTiles.map((boxTileItem) => this.boxTile(boxTileItem)) }
-						</Row>
-					</div>
-					<div className='scroll-anim'>
-						<div>		
-							<Row className='section animate-pop-in delay-1'>
-								<Col>
-								
-									<div>
-										<h3 className='section animate-pop-in delay-2'>Nuevos Ingresos</h3>									
-										<p className='section animate-pop-in delay-3'>
-											Forma parte de <span className='color-emphasis-1'>la red más importante de televidentes con un único sistema de micropagos y pagos.
-											</span> Donde con un simple click se destinan nuevos ingresos a tu canal y anunciantes.
-										</p>
-										
-									</div>
-								
-								</Col>
-							</Row>
-						</div>
-					</div>
-					<div className='scroll-anim'>
-						<div className='bg-trianglify-purple animate-pop-in delay-1'>
-							<Row className='section text-white'>
-								<Col>
-									<h2>¿Cómo funciona?</h2>
-									
-									<h3 className='hight-light'>
-										Es muy simple, comparte el link WebAnd.TV de tu canal
-										y se cargaran microwebsites sincronizados con tu contenido.
-									</h3>
-									<p>
-										A traves de un sencillo panel de control puedes agregar 
-										microwebsites creados por ti, tu equipo de desarrollo, marketing o comercial. 
-										Estos se muestran a tus televidentes coordinados con tu 
-										contenido estimulando a compras instantaneas y mas entretenimiento.
-									</p>
-									<Carousel>
-										<img src={imageBuy} alt='WebAndTV Buy'/>
-										<img src={imageVote} alt='WebAndTV Vote'/>
-										<img src={imageDownloadApp} alt='WebAndTV Download App'/>
-									</Carousel>
-									
-									<p>
-										* Logos, imagenes y marcas son de caracter ilustrativo. No tienen ningun tipo de relacion con WebAnd.TV.
-									</p>
-								</Col>
-							</Row>
-						</div>
-					</div>
-					<div className='scroll-anim'>
-						<Row className='section animate-pop-in delay-1'>
-							<Col>
-									<h2>
-										Gratis!	<span className='hight-light'>para tu canal o programa de TV</span>
-									</h2>
-									
-										<p>
-											WebAnd.TV genera ingresos economicos adicionales a tu canal o programa de TV, de estos, obtienes el 95% y el 5% restante es para el mantenimiento de nuestra plataforma. No tienes que invertir nada.
-										</p>											
-									
-							</Col>
-						</Row>
-					</div>
-					<div className='scroll-anim'>
-					
-						<div className='bg-waves-purple animate-pop-in delay-1'>
-							<Row className='section text-white '>
-								<Col>
-								<Row>
-									<Col>
-										<h2>COMIENZA AHORA!</h2>
-										<p>
-											Registra tu canal de TV en WebAnd.TV y accede al panel de control. Es facil, rapido y totalmente gratis para tu canal de TV.
-										</p>
-									</Col>								
-								</Row>
-								<Row>
-									<Col>
-										<Form>
-											<Form.Group>
-												<Form.Label>Canal de TV</Form.Label>
-												<Form.Control type='text' placeholder='name@example.com' />
-											</Form.Group>
-											<Form.Group>
-												<Form.Label>Country</Form.Label>
-												<Form.Control type='text' placeholder='name@example.com' />
-											</Form.Group>
-											<Form.Group>
-												<Form.Label>Estado/Provincia</Form.Label>
-												<Form.Control type='text' placeholder='' />
-											</Form.Group>
-											<Form.Group>
-												<Form.Label>City</Form.Label>
-												<Form.Control type='text' placeholder='Ciudad' />
-											</Form.Group>
-											<Form.Group>
-												<Form.Label>Nombre</Form.Label>
-												<Form.Control type='text' placeholder='Nombre' />
-											</Form.Group>
-											<Form.Group>
-												<Form.Label>Apellido</Form.Label>
-												<Form.Control type='text' placeholder='Apellido' />
-											</Form.Group>
-											<Form.Group>
-												<Form.Label>Telefono</Form.Label>
-												<Form.Control type='text' placeholder='ej: +1 000000000' />
-											</Form.Group>
-											<Form.Group>
-												<Form.Label>Email</Form.Label>
-												<Form.Control type='email' placeholder='name@example.com' />
-											</Form.Group>
-											<Form.Group>
-												<Form.Label>Password</Form.Label>
-												<Form.Control type='password' placeholder='Mayor a 8 caracteres' />
-											</Form.Group>
-											<Form.Group>
-												<Form.Label>Repetir Password</Form.Label>
-												<Form.Control type='password' placeholder='Repite tu password' />
-											</Form.Group>
-											<div>
-												<Button variant='secondary'>Crear perfil de mi canal</Button>
-											</div>
-										</Form>
-									</Col>								
-								</Row>
-								</Col>
-							</Row>
-						</div>
-					</div>
-	
-				</div>
-			</div>
-		);
-	}
 
 	render() {
-		const { boxTiles, loginWrapper } = this.state;
+		const { boxTiles, isTop } = this.state;
+		console.log('isTop: ', isTop);
 		return (
-			<div id='login-wrapper' className='login-wrapper' style={{height: `${loginWrapper}px`}}>
-				<header>
+			<div id='login-wrapper' className='login-wrapper animate-pop-in delay-1'>
+				<header className={(!isTop) ? 'header-bg animate-pop-in delay-1' : null}>
 					<div className='logo-webandtv animate-pop-in delay-1'></div>
+					<div>
+						<a href='https://weband.tv/instant/admin/account/'>Login</a>
+					</div>
 				</header>
 				
-				<div className='hero-wrapper bg-trianglify-purple'>
+				<div className='hero-wrapper bg-waves-purple animate-pop-in delay-1'>
 
 					<div className='hero-title'>
 						<ScrollOverPack always='true'>
 							<h1 class='mega montserrat bold animate-pop-in delay-1'>
-								Impulsa el <span class='color-emphasis-1'>consumo </span>
-								instantáneo <span class='color-emphasis-1'>de tus televidentes.</span>
+								Impulsa el consumo instantáneo de tus televidentes.
 							</h1>
 						</ScrollOverPack>
 					</div>
 
-					<div className='hero-image-wrapper '>
-						<div className='hero-image animante-pop-in delay-1'>
-							<div className='hero-image-smartphone animate-pop-in delay-2'></div>
+					<div className='hero-image-wrapper animante-pop-in delay-1'>
+						<div className='hero-image animante-pop-in delay-2'>
+							<div className='hero-image-smartphone animante-pop-in delay-3'></div>
 						</div>
 					</div>
 				</div>
 
-				{(loginWrapper === 0) ? (this.preLoadLogin()) : (
 				<div className='single'>
 					<div className='main-container'>
-						<ScrollOverPack>
-							<Row className='section none-bottom'>
+						
+							<Row className='section'>
 								<Col>
-									<div className='intro animate-pop-in delay-1'>WebAnd.TV es la plataforma web creada para que tu canal de TV reciba más ingresos económicos y brinde más entretenimiento a tus televidentes.</div>
-									<div className='animate-pop-in delay-2'>
-										<p>
-											Ofrecemos la herramienta que tu canal necesita para generar los estimulos a 
-											los televidentes de hoy, que van desde mas participacion en tus redes sociales,
-											mas descargas de la App de tu canal, mas ingresos para ti y tus anunciantes.
-										</p>
+									<div className='intro animate-pop-in delay-1'>
+										WebAnd.TV es la plataforma web creada para que tu canal de TV reciba más ingresos 
+										económicos y brinde más entretenimiento a tus televidentes.
 									</div>
 								</Col>
 							</Row>
-						</ScrollOverPack>
-						<ScrollOverPack always='true'>
+							<div className='arrow-div'></div>
+							<Row className='section none-bottom'>
+								<Col>
+									<ScrollOverPack>
+										<div className='animate-pop-in delay-2'>
+											<h2>Adapta tu canal al televidente de hoy</h2>
+											<h3 className='text-muted'>
+												Ofrecemos la herramienta que tu canal necesita para generar los estimulos 
+												a los televidentes de hoy, que van desde mas participacion en tus redes 
+												sociales, mas descargas de la App de tu canal, mas ingresos para ti y tus anunciantes.
+											</h3>
+										</div>
+									</ScrollOverPack>
+								</Col>
+							</Row>
 							<Row className='section'>
 								{ boxTiles.map((boxTileItem) => this.boxTile(boxTileItem)) }
 							</Row>
-						</ScrollOverPack>
-						<ScrollOverPack always='true'>
-							<div className='bg-dark text-white animate-pop-in delay-1'>		
-								<Row className='section'>
-									<Col>
-										<div>
+							<div className='bg-waves-square animate-pop-in delay-1'>		
+								<Row className='section bg-gear-wrapper-container'>
+									<Col xs={12} md='6'>
+										<div className='profile-channel'>
+										</div>
+									</Col>
+									<Col xs={12} md='6'>
+										<div className='content-half-half right text-white'>
 											<div className='animate-pop-in delay-2'>
 												<h3>Nuevos Ingresos</h3>
 											</div>
-											<div className='animate-pop-in delay-3'>
-												Forma parte de <span className='color-emphasis-1'>la red más importante de televidentes con un único sistema de micropagos y pagos.
+											<ScrollOverPack always='true'>
+											<p className='animate-pop-in delay-3'>
+												Forma parte de <span className='hight-light'>la red más importante de televidentes con un único sistema de micropagos y pagos.
 												</span> Donde con un simple click se destinan nuevos ingresos a tu canal y anunciantes.
-											</div>
+											</p>
+											</ScrollOverPack>
 										</div>
 									</Col>
 								</Row>
+								<div className='bg-gear-animated'></div>
 							</div>
-						</ScrollOverPack>
-						<ScrollOverPack always='true'>
-							<div className='bg-trianglify-purple animate-pop-in delay-1'>
-								<Row className='section text-white'>
+						
+							<div className='animate-pop-in delay-1'>
+								<Row className='section'>
 									<Col>
+									<ScrollOverPack always='true'>
 										<h2 className='animate-pop-in delay-3'>¿Cómo funciona?</h2>
-										
-										<h3 className='hight-light animate-pop-in delay-4'>
+										<h3 className='text-muted'>
 											Es muy simple, comparte el link WebAnd.TV de tu canal
 											y se cargaran microwebsites sincronizados con tu contenido.
 										</h3>
@@ -396,43 +250,53 @@ class Login extends React.Component {
 											<img src={imageBuy} alt='WebAndTV Buy'/>
 											<img src={imageVote} alt='WebAndTV Vote'/>
 											<img src={imageDownloadApp} alt='WebAndTV Download App'/>
+											<img src={imageChatNow} alt='WebAndTV Chat'/>
+											<img src={imageTVBuy} alt='WebAndTV TV Buy'/>
+											<img src={imageVoteMovies} alt='WebAndTV Vote Movies'/>
+											<img src={imageMore} alt='WebAndTV More'/>
+											<img src={imageBuyCinema} alt='WebAndTV Buy Cinema'/>
+											<img src={imageVoteOppinion} alt='WebAndTV Oppinion'/>
+											<img src={imageReaction} alt='WebAndTV Reaction'/>
 										</Carousel>
-										
 										<p>
 											* Logos, imagenes y marcas son de caracter ilustrativo. No tienen ningun tipo de relacion con WebAnd.TV.
 										</p>
+									</ScrollOverPack>
 									</Col>
 								</Row>
 							</div>
-						</ScrollOverPack>
-						<ScrollOverPack always='true'>
+
+							<div className='arrow-div'></div>
+
 							<Row className='section animate-pop-in delay-1'>
 								<Col>
 									<h2 className='animate-pop-in delay-2'>
 										Gratis!	<span className='hight-light'>para tu canal o programa de TV</span>
 									</h2>
+									<ScrollOverPack always='true'>
 									<div className='animate-pop-in delay-3'>
 										WebAnd.TV genera ingresos economicos adicionales a tu canal o programa de TV, de estos, obtienes el 95% y el 5% restante es para el mantenimiento de nuestra plataforma. No tienes que invertir nada.
 									</div>
+									</ScrollOverPack>
 								</Col>
 							</Row>
-						</ScrollOverPack>
-						<ScrollOverPack>
 						
 							<div className='bg-waves-purple animate-pop-in delay-1'>
 								<Row className='section text-white '>
 									<Col>
 									<Row>
 										<Col>
+											<ScrollOverPack>
 											<h2 className='animate-pop-in delay-2'>COMIENZA AHORA!</h2>
 											<p className='animate-pop-in delay-3'>
 												Registra tu canal de TV en WebAnd.TV y accede al panel de control. Es facil, rapido y totalmente gratis para tu canal de TV.
 											</p>
+											</ScrollOverPack>
 										</Col>								
 									</Row>
 									<Row>
 										<Col className='animate-pop-in delay-4'>
-											<Form>
+											<Form className='call-to-action'>
 												<Form.Group>
 													<Form.Label>Canal de TV</Form.Label>
 													<Form.Control type='text' placeholder='name@example.com' />
@@ -473,8 +337,13 @@ class Login extends React.Component {
 													<Form.Label>Repetir Password</Form.Label>
 													<Form.Control type='password' placeholder='Repite tu password' />
 												</Form.Group>
-												<div>
-													<Button variant='secondary'>Crear perfil de mi canal</Button>
+												<div className='d-flex justify-content-end'>
+													<Button 
+														variant='success'
+														className='btn-large'
+													>
+														Crear perfil de mi canal
+													</Button>
 												</div>
 											</Form>
 										</Col>								
@@ -482,14 +351,9 @@ class Login extends React.Component {
 									</Col>
 								</Row>
 					  	</div>
-						</ScrollOverPack>
-						
-
 					</div>
 
 				</div>
-				)
-			}
 			</div>
 		);
 	}
