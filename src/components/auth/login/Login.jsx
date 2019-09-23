@@ -21,6 +21,12 @@ import imageBuyCinema from '../../../assets/images/image-buy-cinema.png';
 import imageVoteOppinion from '../../../assets/images/image-vote-oppinion.png';
 import imageReaction from '../../../assets/images/image-reaction.png';
 
+import Footer from '../core/footer/Footer';
+
+import LoginModal from './modals/LoginModal';
+
+import { Modal } from '../../ui/Theme';
+
 import './Login.css';
 import Carousel from 'nuka-carousel';
 
@@ -37,14 +43,18 @@ class Login extends React.Component {
 			errorMessage: null,
 			boxTiles: [],
 			isTop: true,
+			modalShow: false,
+			children: <div />,
 		};
+		this.handleModalClose = this.handleModalClose.bind(this);
+		this.handleModalAccept = this.handleModalAccept.bind(this);
 	}
 
 	componentWillMount() {
 		const boxTiles =[
 			{
 				icon: 'icon-hashtag',
-				text: 'Haz que tus televidentes participen con tus #hashtags a través de un simple click.',
+				text: 'Haz que tus televidentes participen con un simple click a tus #hashtags.',
 				bgColor: 'white',
 			},
 			{
@@ -54,22 +64,22 @@ class Login extends React.Component {
 			},
 			{
 				icon: 'icon-increase-revenue',
-				text: 'Recibe importantes ingresos economicos a traves de un nuevo sistema de anuncios online.',
+				text: 'Recibe nuevos ingresos a traves de nuestro sistema de anuncios online.',
 				bgColor: 'white',
 			},
 			{
 				icon: 'icon-micro-payment',
-				text: 'Ofrece un sistema de micropago mucho más rápido que por SMS.',
+				text: 'Ofrece un sistema de micropago mucho más inmediato que por SMS o llamada.',
 				bgColor: 'white',
 			},
 			{
 				icon: 'icon-realtime',
-				text: 'Adapta tu canal al televidente de hoy con contenido interactivo.',
+				text: 'Conoce la opinión de tus televidentes en tiempo real.',
 				bgColor: 'white',
 			},
 			{
 				icon: 'icon-idea',
-				text: 'Crea nuevas oportunidades economicas y de entretenimiento.',
+				text: 'Crea más entretenimiento y nuevas oportunidades económicas.',
 				bgColor: 'white',
 			},
 		];
@@ -93,6 +103,18 @@ class Login extends React.Component {
       }
     });
   }
+
+	handleModal(children) {
+		this.setState({ modalShow: true, children });
+	}
+
+	handleModalClose() {
+		this.setState({ modalShow: false });
+	}
+
+	handleModalAccept() {
+		this.setState({ modalShow: false });
+	}
 
 	boxTile = (boxTileItem) => {
 		const { icon, text, bgColor } = boxTileItem;
@@ -151,15 +173,24 @@ class Login extends React.Component {
 
 
 	render() {
-		const { boxTiles, isTop } = this.state;
+		const { boxTiles, isTop, modalShow, children } = this.state;
+
 		console.log('isTop: ', isTop);
 		return (
 			<div id='login-wrapper' className='login-wrapper animate-pop-in delay-1'>
 				<header className={(!isTop) ? 'header-bg animate-pop-in delay-1' : null}>
 					<div className='logo-webandtv animate-pop-in delay-1'></div>
-					<div>
-						<a href='https://weband.tv/instant/admin/account/'>Login</a>
-					</div>
+					<Button
+						className='btn-link'
+						onClick={() => this.handleModal(
+							<LoginModal
+								handleModalClose={this.handleModalClose}
+								handleModalAccept={this.handleModalAccept}
+							/>,
+						)}
+					>
+						Login
+					</Button>
 				</header>
 				
 				<div className='hero-wrapper bg-waves-purple animate-pop-in delay-1'>
@@ -167,7 +198,7 @@ class Login extends React.Component {
 					<div className='hero-title'>
 						<ScrollOverPack always='true'>
 							<h1 class='mega montserrat bold animate-pop-in delay-1'>
-								Impulsa el consumo instantáneo de tus televidentes.
+								Impulsamos el consumo instantáneo de tus televidentes
 							</h1>
 						</ScrollOverPack>
 					</div>
@@ -185,8 +216,8 @@ class Login extends React.Component {
 							<Row className='section'>
 								<Col>
 									<div className='intro animate-pop-in delay-1'>
-										WebAnd.TV es la plataforma web creada para que tu canal de TV reciba más ingresos 
-										económicos y brinde más entretenimiento a tus televidentes.
+										Creamos la plataforma WebAnd.TV con el fin de generar a tu canal de TV más 
+										ingresos económicos y más entretenimiento a tus televidentes.
 									</div>
 								</Col>
 							</Row>
@@ -197,9 +228,10 @@ class Login extends React.Component {
 										<div className='animate-pop-in delay-2'>
 											<h2>Adapta tu canal al televidente de hoy</h2>
 											<h3 className='text-muted'>
-												Ofrecemos la herramienta que tu canal necesita para generar los estimulos 
-												a los televidentes de hoy, que van desde mas participacion en tus redes 
-												sociales, mas descargas de la App de tu canal, mas ingresos para ti y tus anunciantes.
+												El televidente de hoy necesita estímulos e inmediates para acceder a todo lo que ve.
+												Ofrecemos la herramienta que tu canal necesita para generar estos estimulos e
+												impulsar el acceso a tus redes sociales, descargas de Apps, interactividad con 
+												tu contenido, compras online y micropagos.
 											</h3>
 										</div>
 									</ScrollOverPack>
@@ -216,12 +248,9 @@ class Login extends React.Component {
 									</Col>
 									<Col xs={12} md='6'>
 										<div className='content-half-half right text-white'>
-											<div className='animate-pop-in delay-2'>
-												<h3>Nuevos Ingresos</h3>
-											</div>
 											<ScrollOverPack always='true'>
 											<p className='animate-pop-in delay-3'>
-												Forma parte de <span className='hight-light'>la red más importante de televidentes con un único sistema de micropagos y pagos.
+												Forma parte de <span className='hight-light'>la unica red de canales con un sistema de micropagos y pagos online.
 												</span> Donde con un simple click se destinan nuevos ingresos a tu canal y anunciantes.
 											</p>
 											</ScrollOverPack>
@@ -258,9 +287,9 @@ class Login extends React.Component {
 											<img src={imageVoteOppinion} alt='WebAndTV Oppinion'/>
 											<img src={imageReaction} alt='WebAndTV Reaction'/>
 										</Carousel>
-										<p>
+										<div className='notification-mark'>
 											* Logos, imagenes y marcas son de caracter ilustrativo. No tienen ningun tipo de relacion con WebAnd.TV.
-										</p>
+										</div>
 									</ScrollOverPack>
 									</Col>
 								</Row>
@@ -284,76 +313,66 @@ class Login extends React.Component {
 							<div className='bg-waves-purple animate-pop-in delay-1'>
 								<Row className='section text-white '>
 									<Col>
-									<Row>
-										<Col>
-											<ScrollOverPack>
-											<h2 className='animate-pop-in delay-2'>COMIENZA AHORA!</h2>
-											<p className='animate-pop-in delay-3'>
-												Registra tu canal de TV en WebAnd.TV y accede al panel de control. Es facil, rapido y totalmente gratis para tu canal de TV.
-											</p>
-											</ScrollOverPack>
-										</Col>								
-									</Row>
-									<Row>
-										<Col className='animate-pop-in delay-4'>
-											<Form className='call-to-action'>
-												<Form.Group>
-													<Form.Label>Canal de TV</Form.Label>
-													<Form.Control type='text' placeholder='name@example.com' />
-												</Form.Group>
-												<Form.Group>
-													<Form.Label>Country</Form.Label>
-													<Form.Control type='text' placeholder='name@example.com' />
-												</Form.Group>
-												<Form.Group>
-													<Form.Label>Estado/Provincia</Form.Label>
-													<Form.Control type='text' placeholder='' />
-												</Form.Group>
-												<Form.Group>
-													<Form.Label>City</Form.Label>
-													<Form.Control type='text' placeholder='Ciudad' />
-												</Form.Group>
-												<Form.Group>
-													<Form.Label>Nombre</Form.Label>
-													<Form.Control type='text' placeholder='Nombre' />
-												</Form.Group>
-												<Form.Group>
-													<Form.Label>Apellido</Form.Label>
-													<Form.Control type='text' placeholder='Apellido' />
-												</Form.Group>
-												<Form.Group>
-													<Form.Label>Telefono</Form.Label>
-													<Form.Control type='text' placeholder='ej: +1 000000000' />
-												</Form.Group>
-												<Form.Group>
-													<Form.Label>Email</Form.Label>
-													<Form.Control type='email' placeholder='name@example.com' />
-												</Form.Group>
-												<Form.Group>
-													<Form.Label>Password</Form.Label>
-													<Form.Control type='password' placeholder='Mayor a 8 caracteres' />
-												</Form.Group>
-												<Form.Group>
-													<Form.Label>Repetir Password</Form.Label>
-													<Form.Control type='password' placeholder='Repite tu password' />
-												</Form.Group>
-												<div className='d-flex justify-content-end'>
-													<Button 
-														variant='success'
-														className='btn-large'
-													>
-														Crear perfil de mi canal
-													</Button>
-												</div>
-											</Form>
-										</Col>								
-									</Row>
+										<Row>
+											<Col>
+												<ScrollOverPack>
+												<h2 className='animate-pop-in delay-2'>COMIENZA AHORA!</h2>
+												<p className='animate-pop-in delay-3'>
+													Registra tu canal de TV en WebAnd.TV y accede al panel de control. Es facil, rapido y totalmente gratis para tu canal de TV.
+												</p>
+												</ScrollOverPack>
+											</Col>								
+										</Row>
+										<Row>
+											<Col className='animate-pop-in delay-4'>
+												<Form className='call-to-action'>
+													<Form.Group>
+														<Form.Label>Nombre Completo</Form.Label>
+														<Form.Control type='text' placeholder='Nombre' />
+													</Form.Group>
+													<Form.Group>
+														<Form.Label>Telefono</Form.Label>
+														<Form.Control type='text' placeholder='ej: +1 000000000' />
+													</Form.Group>
+													<Form.Group>
+														<Form.Label>Email</Form.Label>
+														<Form.Control type='email' placeholder='name@example.com' />
+													</Form.Group>
+													<Form.Group>
+														<Form.Label>Password</Form.Label>
+														<Form.Control type='password' placeholder='Mayor a 8 caracteres' />
+													</Form.Group>
+													<Form.Group>
+														<Form.Label>Repetir Password</Form.Label>
+														<Form.Control type='password' placeholder='Repite tu password' />
+													</Form.Group>
+													<div className='d-flex justify-content-end'>
+														<Button 
+															variant='success'
+															className='btn-large'
+														>
+															Crear perfil de mi canal
+														</Button>
+													</div>
+												</Form>
+											</Col>
+										</Row>
 									</Col>
 								</Row>
 					  	</div>
 					</div>
 
 				</div>
+
+				<Footer />
+
+				<Modal
+					show={modalShow}
+					handleClose={this.handleModalClose}
+					handleAccept={this.handleModalAccept}
+				>
+					{children}
+				</Modal>
 			</div>
 		);
 	}
