@@ -1,5 +1,7 @@
 /* Pages */
 import Login from '../auth/login/LoginContainer';
+import AboutUs from '../public/pages/aboutUs/AboutUs';
+import ContactUs from '../public/pages/contactUs/ContactUs';
 /* import SignUp from '../auth/signUp/SignUpContainer';
 import UserProfile from '../dashboard/user/profile/ProfileContainer';
 import Schedule from '../dashboard/schedule/ScheduleContainer';
@@ -106,16 +108,23 @@ export const routes = [
 		Component: OverView,
 		Layout: Dashboard,
 		Access: 'Private',
+	},*/
+	{
+		id: 4,
+		exact: true,
+		path: '/contactUs',
+		Component: ContactUs,
+		Layout: PublicLayout,
+		Access: 'Public',
 	},
 	{
 		id: 3,
 		exact: true,
-		path: '/signup',
-		Component: SignUp,
+		path: '/aboutUs',
+		Component: AboutUs,
 		Layout: PublicLayout,
 		Access: 'Public',
 	},
-*/
 	{
 		id: 2,
 		exact: true,

@@ -18,9 +18,9 @@ class Footer extends Component {
 								{` Copyright © ${new Date().getFullYear()} WebAnd.TV`}
 							</span>
 							<Link to='../terms' onClick={this.openTerms} className='space'>Terms & Conditions</Link>
-							<Link to='../privacy' onClick={this.openPrivacy} className='space'>Privacy</Link>
-							<Link to='/' onClick={this.openPrivacy} className='space'>About Us</Link>
-							<Link to='/' onClick={this.openPrivacy}>Contact Us</Link>
+							<Link to='../privacy' className='space'>Privacy</Link>
+							<Link to='/aboutUs' className='space'>About Us</Link>
+							<Link to='/contactUs'>Contact Us</Link>
 						</div>
 					</Col>
 				</Row>

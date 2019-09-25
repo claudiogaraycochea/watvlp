@@ -13,7 +13,30 @@ a, a:hover, a:focus {
 	text-decoration: none;
 }
 
+header {
+	position: fixed;
+	top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  padding: 0 20px;
+  align-items: center;
+  display: flex !important;
+  align-items: center;
+  z-index: 100000;
+  justify-content: space-between;
+	animation-delay: 1.1s;
+	background-color: #220c3a;
+}
+
+header .btn-link {
+  color: #ff00f7 !important;
+  font-size: 20px;
+  margin-top: -5px;
+}
+
 .container {
+	margin-top: 60px;
 	padding: 30px;
 }
 

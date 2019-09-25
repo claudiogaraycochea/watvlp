@@ -14,20 +14,13 @@ class Footer extends Component {
 				<Row>
 					<Col>
 						<div className='text-center text-small py-2'>
-							<Link to='/' onClick={this.openTerms}>
-								&nbsp;
-								{'Terms & Conditions'}
-							</Link>
-							<Link to='/' onClick={this.openPrivacy}>
-								&nbsp;
-								{'Privacy'}
-							</Link>
-							<span className='label-text'>
-								{' '}
-								Copyright ©
-								{new Date().getFullYear()}
-								{'Public Bloc'}
+							<span className='label-text space'>
+								{` Copyright © ${new Date().getFullYear()} WebAnd.TV`}
 							</span>
+							<Link to='../terms' onClick={this.openTerms} className='space'>Terms & Conditions</Link>
+							<Link to='../privacy' onClick={this.openPrivacy} className='space'>Privacy</Link>
+							<Link to='/aboutUs' onClick={this.openPrivacy} className='space'>About Us</Link>
+							<Link to='/contactUs' onClick={this.openPrivacy}>Contact Us</Link>
 						</div>
 					</Col>
 				</Row>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import './Header.css';
+import { Link } from 'react-router-dom';
 
 class Header extends Component {
 	constructor(props) {
@@ -10,14 +10,11 @@ class Header extends Component {
 
 	render() {
 		return (
-			<div className='signup-header'>
-				<Link to='/' className=''>
-					<div className='d-inline-flex align-self-center'>
-						<div className='logo-public-bloc' />
-						<div className='text-white pl-2 align-self-center'>Public Bloc</div>
-					</div>
+			<header>
+				<Link to='/home'>
+					<div className='logo-webandtv'></div>
 				</Link>
-			</div>
+			</header>
 		);
 	}
 }

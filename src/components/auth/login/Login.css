@@ -18,28 +18,14 @@
   max-width: 990px;
 }
 
-header {
-  position: fixed;
-  left: 0;
-  right: 0;
-  height: 60px;
-  padding: 0 20px;
-  align-items: center;
-  display: flex !important;
-  align-items: center;
-  z-index: 100000;
-  justify-content: space-between;
-  animation-delay: 1.1s;
-}
-
 header .btn-link {
   color: #ff00f7 !important;
   font-size: 20px;
   margin-top: -5px;
 }
 
-.header-bg {
-  background-color: #220c3a;
+.header-bg-remove {
+  background-color: transparent;
 }
 
 .hero-wrapper {

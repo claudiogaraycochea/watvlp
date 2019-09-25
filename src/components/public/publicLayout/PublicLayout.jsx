@@ -13,7 +13,7 @@ class PublicLayout extends Component {
 	render() {
 		return (
 			<div>
-				<Header headerTitle='Sign Up' />
+				<Header />
 				{this.props.children}
 				<Footer />
 			</div>

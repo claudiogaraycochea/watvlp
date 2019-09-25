@@ -178,7 +178,7 @@ class Login extends React.Component {
 		console.log('isTop: ', isTop);
 		return (
 			<div id='login-wrapper' className='login-wrapper animate-pop-in delay-1'>
-				<header className={(!isTop) ? 'header-bg animate-pop-in delay-1' : null}>
+				<header className={(!isTop) ? 'animate-pop-in delay-1' : 'header-bg-remove'}>
 					<div className='logo-webandtv animate-pop-in delay-1'></div>
 					<Button
 						className='btn-link'
@@ -216,7 +216,7 @@ class Login extends React.Component {
 							<Row className='section'>
 								<Col>
 									<div className='intro animate-pop-in delay-1'>
-										Creamos la plataforma WebAnd.TV con el fin de generar a tu canal de TV más 
+										Creamos la plataforma WebAnd.tv con el fin de generar a tu canal de TV más 
 										ingresos económicos y más entretenimiento a tus televidentes.
 									</div>
 								</Col>
@@ -266,14 +266,15 @@ class Login extends React.Component {
 									<ScrollOverPack always='true'>
 										<h2 className='animate-pop-in delay-3'>¿Cómo funciona?</h2>
 										<h3 className='text-muted'>
-											Es muy simple, comparte el link WebAnd.TV de tu canal
-											y se cargaran microwebsites sincronizados con tu contenido.
+											Comparte el link WebAnd.tv de tu canal y automáticamente 
+											se cargarán microwebsites sincronizados con tu contenido
 										</h3>
 										<p className='animate-pop-in delay-5'>
-											A traves de un sencillo panel de control puedes agregar 
-											microwebsites creados por ti, tu equipo de desarrollo, marketing o comercial. 
-											Estos se muestran a tus televidentes coordinados con tu 
-											contenido estimulando a compras instantaneas y mas entretenimiento.
+											A través de un sencillo panel de control puedes agregar 
+											microwebsites creados por tí, tu equipo de desarrollo o marketing.  
+											Los mismos se mostrarán coordinados con el 
+											contenido de tu transmisión, brindando una nueva
+											 manera de interactuar con cada uno de tus televidentes.
 										</p>
 										<Carousel>
 											<img src={imageBuy} alt='WebAndTV Buy'/>
@@ -300,11 +301,14 @@ class Login extends React.Component {
 							<Row className='section animate-pop-in delay-1'>
 								<Col>
 									<h2 className='animate-pop-in delay-2'>
-										Gratis!	<span className='hight-light'>para tu canal o programa de TV</span>
+										Gratis para tu canal de TV
 									</h2>
 									<ScrollOverPack always='true'>
 									<div className='animate-pop-in delay-3'>
-										WebAnd.TV genera ingresos economicos adicionales a tu canal o programa de TV, de estos, obtienes el 95% y el 5% restante es para el mantenimiento de nuestra plataforma. No tienes que invertir nada.
+										WebAnd.tv no tiene ningún costo para tu canal de TV. 
+										Nos sustentamos con el 5% de los ingresos que generes gracias 
+										a nuestra plataforma y el 95% restante es totalmente para tu 
+										canal de TV.
 									</div>
 									</ScrollOverPack>
 								</Col>
@@ -318,7 +322,7 @@ class Login extends React.Component {
 												<ScrollOverPack>
 												<h2 className='animate-pop-in delay-2'>COMIENZA AHORA!</h2>
 												<p className='animate-pop-in delay-3'>
-													Registra tu canal de TV en WebAnd.TV y accede al panel de control. Es facil, rapido y totalmente gratis para tu canal de TV.
+													Registra tu canal de TV en WebAnd.tv y accede al panel de control.
 												</p>
 												</ScrollOverPack>
 											</Col>								
@@ -326,6 +330,10 @@ class Login extends React.Component {
 										<Row>
 											<Col className='animate-pop-in delay-4'>
 												<Form className='call-to-action'>
+													<Form.Group>
+														<Form.Label>Nombre de link</Form.Label>
+														https://weband.tv/<Form.Control type='text' placeholder='Nombre de link' />
+													</Form.Group>
 													<Form.Group>
 														<Form.Label>Nombre Completo</Form.Label>
 														<Form.Control type='text' placeholder='Nombre' />
@@ -351,7 +359,7 @@ class Login extends React.Component {
 															variant='success'
 															className='btn-large'
 														>
-															Crear perfil de mi canal
+															Crear cuenta
 														</Button>
 													</div>
 												</Form>
