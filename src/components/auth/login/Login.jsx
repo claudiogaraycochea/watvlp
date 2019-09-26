@@ -2,12 +2,17 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 import ScrollAnim from 'rc-scroll-anim';
+import { Link } from 'react-router-dom';
+
+import { request } from '../../../lib/https';
 
 import {
 	Row,
 	Col,
 	Form,
 	Button,
+	InputGroup,
+	Alert,
 } from 'react-bootstrap';
 
 import imageDownloadApp from '../../../assets/images/image-download-app.png';
@@ -38,19 +43,29 @@ class Login extends React.Component {
 		super(props);
 		this.state = {
 			updated: false,
-			email: '',
-			password: '',
 			errorMessage: null,
 			boxTiles: [],
 			isTop: true,
 			modalShow: false,
 			children: <div />,
+			terms: false,
+			validated: false,
+			linkname: '',
+			firstname: '',
+			lastname: '',
+			telephone: '',
+			email: '',
+			password: '',
+			confirmPassword: '',
+			signUpResult: false,
 		};
 		this.handleModalClose = this.handleModalClose.bind(this);
 		this.handleModalAccept = this.handleModalAccept.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleInputChange = this.handleInputChange.bind(this);
 	}
 
-	componentWillMount() {
+	UNSAFE_componentWillMount() {
 		const boxTiles =[
 			{
 				icon: 'icon-hashtag',
@@ -84,15 +99,6 @@ class Login extends React.Component {
 			},
 		];
 		this.setState({boxTiles});
-	}
-
-	componentWillReceiveProps(prevProps) {
-		if ((prevProps.errorMessage !== this.props.errorMessage)
-		&& (this.props.errorMessage !== null)) {
-			this.setState({
-				errorMessage: this.props.errorMessage,
-			});
-		}
 	}
 
   componentDidMount() {
@@ -154,26 +160,82 @@ class Login extends React.Component {
 		}
 	}
 
-	onHandleSubmit = (event) => {
+	handleInputChange(event) {
+		const { target } = event;
+		const { name } = target;
+		const value = target.type === 'checkbox' ? target.checked : target.value;
+		this.setState({ [name]: value });
+	}
+
+	handleSubmit = (event) => {
 		event.preventDefault();
-		const { email, password } = this.state;
-		if (email !== '' && password !== '') {
-			this.setState({ updated: true });
-			this.props.userLogin(email, password);
+		event.stopPropagation();
+		
+		const form = event.currentTarget;
+		if (form.checkValidity() === false) {
+			this.setState({ validated: true });
+		} else {
+			const {
+				linkname,
+				firstname,
+				lastname,
+				telephone,
+				email,
+				password,
+			} = this.state;
+
+			// eslint-disable-next-line
+			/*const passwordRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+			if (!passwordRegex.test(password)) {
+				this.setState({ errorMessage: 'Password must contain at least one lowercase character, one uppercase character, one number and one special character' });
+				return false;
+			}
+
+			if (password !== confirmPassword) {
+				this.setState({ errorMessage: 'Passwords have to be the same' });
+				return false;
+			}*/
+
+			const user = {
+				linkname,
+				firstname,
+				lastname,
+				telephone,
+				email,
+				password,
+			};
+			this.handleSignUp(user);
 		}
-	};
+		return true;
+	}
 
-	onEmailChange = (event) => {
-		this.setState({ email: event.target.value });
-	};
-
-	onPasswordChange = (event) => {
-		this.setState({ password: event.target.value });
-	};
-
+	async handleSignUp(user) {
+		const data = `linkname=${user.linkname}&firstname=${user.firstname}&lastname=${user.lastname}&telephone=${user.telephone}&email=${user.email}&password=${user.password}`;
+		try {
+			const resp = await request('POST', '/signUpLP/', data, {});
+			this.setState({signUpResult: resp.data.result});
+		} catch (err) {
+			console.error(err);
+		}
+	}
 
 	render() {
-		const { boxTiles, isTop, modalShow, children } = this.state;
+		const { 
+			boxTiles,
+			isTop,
+			modalShow,
+			children,
+			terms,
+			validated,
+			linkname,
+			firstname,
+			lastname,
+			telephone,
+			email,
+			password,
+			confirmPassword,
+			signUpResult,
+		} = this.state;
 
 		console.log('isTop: ', isTop);
 		return (
@@ -329,33 +391,119 @@ class Login extends React.Component {
 										</Row>
 										<Row>
 											<Col className='animate-pop-in delay-4'>
-												<Form className='call-to-action'>
+												{(signUpResult) ? <Alert variant='success'>Tu solicitud se ha enviado correctamente, un representante estara contactando para brindarte el acceso a tu cuenta y asesoramiento personalisado.</Alert> : 
+												<Form
+													className='call-to-action'
+													noValidate
+													validated={validated}
+													onSubmit={(event) => this.handleSubmit(event)}
+												>
+													<Form.Group controlId="validationCustomUsername">
+														<InputGroup>
+															<InputGroup.Prepend>
+																<InputGroup.Text id="inputGroupPrepend">https://weband.tv/</InputGroup.Text>
+															</InputGroup.Prepend>
+															<Form.Control
+																type="text"
+																placeholder="Nombre de Link"
+																aria-describedby="inputGroupPrepend"
+																name='linkname'
+																value={linkname}
+																onChange={this.handleInputChange}
+																required
+															/>
+														</InputGroup>
+													</Form.Group>
+													<Form.Row>
+														<Form.Group as={Col}>
+															<Form.Control
+																type='text'
+																placeholder='Nombre'
+																name='firstname'
+																value={firstname}
+																onChange={this.handleInputChange}
+																required
+															/>
+														</Form.Group>
+														<Form.Group as={Col}>
+															<Form.Control
+																type='text'
+																placeholder='Apellido'
+																name='lastname'
+																value={lastname}
+																onChange={this.handleInputChange}
+																required
+															/>
+														</Form.Group>
+													</Form.Row>
 													<Form.Group>
-														<Form.Label>Nombre de link</Form.Label>
-														https://weband.tv/<Form.Control type='text' placeholder='Nombre de link' />
+														<Form.Control
+															type='text'
+															placeholder='Telefono/Interno'
+															name='telephone'
+															value={telephone}
+															onChange={this.handleInputChange}
+															required
+														/>
 													</Form.Group>
 													<Form.Group>
-														<Form.Label>Nombre Completo</Form.Label>
-														<Form.Control type='text' placeholder='Nombre' />
+														<Form.Control
+															type='email'
+															placeholder='Email'
+															name='email'
+															value={email}
+															onChange={this.handleInputChange}
+															required
+														/>
 													</Form.Group>
-													<Form.Group>
-														<Form.Label>Telefono</Form.Label>
-														<Form.Control type='text' placeholder='ej: +1 000000000' />
-													</Form.Group>
-													<Form.Group>
-														<Form.Label>Email</Form.Label>
-														<Form.Control type='email' placeholder='name@example.com' />
-													</Form.Group>
-													<Form.Group>
-														<Form.Label>Password</Form.Label>
-														<Form.Control type='password' placeholder='Mayor a 8 caracteres' />
-													</Form.Group>
-													<Form.Group>
-														<Form.Label>Repetir Password</Form.Label>
-														<Form.Control type='password' placeholder='Repite tu password' />
+													<Form.Row>
+														<Form.Group as={Col}>
+															<Form.Control
+																type='password'
+																placeholder='Password'
+																name='password'
+																value={password}
+																onChange={this.handleInputChange}
+																required
+															/>
+														</Form.Group>
+														<Form.Group as={Col}>
+															<Form.Control
+																type='password'
+																placeholder='Repetir Password'
+																name='confirmPassword'
+																value={confirmPassword}
+																onChange={this.handleInputChange}
+																required
+															/>
+														</Form.Group>
+													</Form.Row>
+													<Form.Group
+														controlId='termsAndCondition'
+														className='d-flex'
+													>
+														<Form.Check
+															type='checkbox'
+															checked={!!(terms)}
+															name='terms'
+															value={terms}
+															onChange={this.handleInputChange}
+															required
+														/>
+														<div className='terms-wrapper'>
+															<span>Acepta los </span>
+															<Link to='////weband.tv/terms' target='_blank'>
+																&nbsp;Términos & Condiciones
+															</Link>
+															<span> y </span>
+															<Link to='////weband.tv/privacy' target='_blank'>
+																Privacidad
+															</Link>
+														</div>
 													</Form.Group>
 													<div className='d-flex justify-content-end'>
-														<Button 
+														<Button
+															type='submit'
 															variant='success'
 															className='btn-large'
 														>
@@ -363,6 +511,7 @@ class Login extends React.Component {
 														</Button>
 													</div>
 												</Form>
+											}
 											</Col>
 										</Row>
 									</Col>
