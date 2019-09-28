@@ -309,12 +309,12 @@ class Login extends React.Component {
 										</div>
 									</Col>
 									<Col xs={12} md='6'>
-										<div className='content-half-half right text-white'>
+										<div className='content-half-half right'>
 											<ScrollOverPack always='true'>
-											<p className='animate-pop-in delay-3'>
+											<h3 className='animate-pop-in delay-3'>
 												Forma parte de <span className='hight-light'>la unica red de canales con un sistema de micropagos y pagos online.
 												</span> Donde con un simple click se destinan nuevos ingresos a tu canal y anunciantes.
-											</p>
+											</h3>
 											</ScrollOverPack>
 										</div>
 									</Col>

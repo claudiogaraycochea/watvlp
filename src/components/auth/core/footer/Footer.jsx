@@ -17,23 +17,22 @@ class Footer extends Component {
 							<span className='label-text space'>
 								{` Copyright © ${new Date().getFullYear()} WebAnd.TV`}
 							</span>
-							<Link to='../terms' onClick={this.openTerms} className='space'>Terms & Conditions</Link>
-							<Link to='../privacy' className='space'>Privacy</Link>
-							<Link to='/aboutUs' className='space'>About Us</Link>
-							<Link to='/contactUs'>Contact Us</Link>
+							<Link to='../terms' onClick={this.openTerms} className='space'>Términos y Condiciones</Link>
+							<Link to='../privacy' className='space'>Privacidad</Link>
+							<Link to='/aboutUs' className='space'>Acerca de</Link>
+							<Link to='/job' className='space'>Empleo</Link>
+							<Link to='/contactUs'>Contáctenos</Link>
 						</div>
 					</Col>
 				</Row>
 				<Row>
 					<Col>
-						<div className='text-small'>
-							<Link to='/' onClick={this.openPrivacy} className='space'>English</Link>
-							<Link to='/' onClick={this.openPrivacy} className='space'>Spanish</Link>
-							<Link to='/' onClick={this.openPrivacy} className='space'>Portuguese</Link>
-							<Link to='/' onClick={this.openPrivacy} className='space'>Italian</Link>
-							<Link to='/' onClick={this.openPrivacy} className='space'>Germany</Link>
-							<Link to='/' onClick={this.openPrivacy} className='space'>French</Link>
-							<Link to='/' onClick={this.openPrivacy} className='space'>Chinese</Link>
+						<div className='text-center text-small py-2'>
+							<Link to='/' className='space'>English</Link>
+							<Link to='/' className='space'>Spanish</Link>
+							<Link to='/' className='space'>Portuguese</Link>
+							<Link to='/' className='space'>Germany</Link>
+							<Link to='/'>French</Link>
 						</div>
 					</Col>
 				</Row>

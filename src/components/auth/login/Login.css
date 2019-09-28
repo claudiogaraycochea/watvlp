@@ -299,10 +299,11 @@ h1, h2, h3, h4 {
   font-weight: 100;
   font-family: 'Roboto';
   font-weight: 100;
+  line-height: 1.3;
 }
 
 h3 {
-  font-size: 1.5rem;
+  font-size: 22px;
 }
 
 p {
@@ -311,11 +312,6 @@ p {
 
 .text-muted {
   color: red;
-}
-
-.login-wrapper h2 {
-  font-size: 38px;
-  margin-bottom: 40px;
 }
 
 .hight-light {
@@ -384,9 +380,13 @@ p {
   }
 
   h2 {
-    font-size: 28px;
+    font-size: 40px;
   }  
 
+  h3 {
+    font-size: 30px;
+  }
+  
   .section {
     padding: 100px 0;
   }
@@ -739,7 +739,11 @@ section:before{
   top: 5px;
   font-size: 14px;
   left: 5px;
-  color: #c3c3c3;
+  color: #451b46;
+}
+
+.terms-wrapper a {
+  color: #2e1765 !important;
 }
 
 /* Medium devices (tablets, 768px and up) */

@@ -26,7 +26,6 @@ class LoginModal extends Component {
 					<Row>
 						<Col>
 							<Form.Group>
-								<Form.Label>Email</Form.Label>
 								<Form.Control
 									type='email'
 									placeholder='Email'
@@ -36,7 +35,6 @@ class LoginModal extends Component {
 								/>
 							</Form.Group>
 							<Form.Group>
-								<Form.Label>Password</Form.Label>
 								<Form.Control
 									type='password'
 									placeholder='*******'

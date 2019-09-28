@@ -2,6 +2,7 @@
 import Login from '../auth/login/LoginContainer';
 import AboutUs from '../public/pages/aboutUs/AboutUs';
 import ContactUs from '../public/pages/contactUs/ContactUs';
+import Job from '../public/pages/job/Job';
 /* import SignUp from '../auth/signUp/SignUpContainer';
 import UserProfile from '../dashboard/user/profile/ProfileContainer';
 import Schedule from '../dashboard/schedule/ScheduleContainer';
@@ -109,6 +110,14 @@ export const routes = [
 		Layout: Dashboard,
 		Access: 'Private',
 	},*/
+	{
+		id: 5,
+		exact: true,
+		path: '/job',
+		Component: Job,
+		Layout: PublicLayout,
+		Access: 'Public',
+	},
 	{
 		id: 4,
 		exact: true,

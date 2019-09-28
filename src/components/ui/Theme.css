@@ -48,6 +48,10 @@ header .btn-link {
 	margin-right: 10px;
 }
 
+.align-center {
+	text-align: center;
+}
+
 .inp-filter {
 	font-size: 12px;
 	padding: 0 10px;
@@ -783,6 +787,12 @@ a {
 	box-shadow: 0px 0px 5px 5px #0099E0;
 }
 
+.text-format {
+	white-space: pre-line;
+	font-size: 14px;
+	text-align: left;
+}
+
 /* To be used for external components that not work First Mobile */
 @media (min-width: 300px) {
 }
@@ -790,7 +800,7 @@ a {
 /* Medium devices (tablets, 768px and up) */
 @media (min-width: 768px) {
 	body {
-		font-size: 15px;
+		font-size: 18px !important;
 	}
 	.box {
 		padding: 20px;

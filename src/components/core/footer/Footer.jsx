@@ -17,10 +17,11 @@ class Footer extends Component {
 							<span className='label-text space'>
 								{` Copyright © ${new Date().getFullYear()} WebAnd.TV`}
 							</span>
-							<Link to='../terms' onClick={this.openTerms} className='space'>Terms & Conditions</Link>
-							<Link to='../privacy' onClick={this.openPrivacy} className='space'>Privacy</Link>
-							<Link to='/aboutUs' onClick={this.openPrivacy} className='space'>About Us</Link>
-							<Link to='/contactUs' onClick={this.openPrivacy}>Contact Us</Link>
+							<Link to='../terms' onClick={this.openTerms} className='space'>Términos y Condiciones</Link>
+							<Link to='../privacy' className='space'>Privacidad</Link>
+							<Link to='/aboutUs' className='space'>Acerca de</Link>
+							<Link to='/job' className='space'>Empleo</Link>
+							<Link to='/contactUs'>Contáctenos</Link>
 						</div>
 					</Col>
 				</Row>
