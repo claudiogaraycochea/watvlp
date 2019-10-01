@@ -350,7 +350,7 @@ p {
 }
 
 .image-slider-wrapper {
-  width: 84%;
+  width: 86%;
   margin: 0 auto;
   padding: 0;
   box-sizing: border-box;
@@ -365,6 +365,10 @@ p {
 
 .slick-dots {
   bottom: -50px !important;
+}
+
+.slick-dots li {
+  width: 12px;
 }
 
 .profile-channel {

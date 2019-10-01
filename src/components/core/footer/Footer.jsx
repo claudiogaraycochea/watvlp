@@ -21,7 +21,6 @@ class Footer extends Component {
 							</span>
 							<Link to='../terms' onClick={this.openTerms} className='space'>{t('footer.terms')}</Link>
 							<Link to='../privacy' className='space'>{t('footer.privacy')}</Link>
-							<Link to='/aboutUs' className='space'>{t('footer.aboutUs')}</Link>
 							<Link to='/job' className='space'>{t('footer.job')}</Link>
 							<Link to='/contactUs'>{t('footer.contactUs')}</Link>
 						</div>

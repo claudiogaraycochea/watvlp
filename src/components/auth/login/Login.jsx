@@ -274,17 +274,13 @@ class Login extends React.Component {
 			<div id='login-wrapper' className='login-wrapper animate-pop-in delay-1'>
 				<header className={(!isTop) ? 'animate-pop-in delay-1' : 'header-bg-remove'}>
 					<div className='logo-webandtv animate-pop-in delay-1'></div>
-					<Button
-						className='btn-link'
-						onClick={() => this.handleModal(
-							<LoginModal
-								handleModalClose={this.handleModalClose}
-								handleModalAccept={this.handleModalAccept}
-							/>,
-						)}
-					>
-						Login
-					</Button>
+					<a href='https://weband.tv/instant/admin/account/'>
+						<Button
+							className='btn-link'
+						>
+							Login
+						</Button>
+					</a>
 				</header>
 				
 				<div className='hero-wrapper bg-waves-purple animate-pop-in delay-1'>
@@ -570,13 +566,13 @@ class Login extends React.Component {
 														/>
 														<div className='terms-wrapper'>
 															<span>{t('general.terms.text1')}</span>
-															<Link to='////weband.tv/terms' target='_blank'>
+															<a href='https://weband.tv/terms' target='_blank'>
 																&nbsp;{t('footer.terms')}
-															</Link>
+															</a>
 															<span> {t('general.terms.text2')} </span>
-															<Link to='////weband.tv/privacy' target='_blank'>
+															<a href='https://weband.tv/privacy' target='_blank'>
 																{t('footer.privacy')}
-															</Link>
+															</a>
 														</div>
 													</Form.Group>
 													<div className='d-flex justify-content-end'>

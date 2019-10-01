@@ -19,9 +19,8 @@ class Footer extends Component {
 							<span className='label-text space'>
 								{` Copyright © ${new Date().getFullYear()} WebAnd.TV`}
 							</span>
-							<Link to='../terms' onClick={this.openTerms} className='space'>{t('footer.terms')}</Link>
-							<Link to='../privacy' className='space'>{t('footer.privacy')}</Link>
-							<Link to='/aboutUs' className='space'>{t('footer.aboutUs')}</Link>
+							<a href='https://weband.tv/terms' target='_blank'>{t('footer.terms')}</a>
+							<a href='https://weband.tv/privacy' target='_blank'>{t('footer.privacy')}</a>
 							<Link to='/job' className='space'>{t('footer.job')}</Link>
 							<Link to='/contactUs'>{t('footer.contactUs')}</Link>
 						</div>
