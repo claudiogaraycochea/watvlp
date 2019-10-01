@@ -1,0 +1,57 @@
+{
+  "general": {
+    "linkname": "Nome do link",
+    "firstname": "Name",
+    "lastname": "Sobrenome",
+    "telephone": "Telephone",
+    "terms": {
+      "text1": "Aceite o ",
+      "text2": " e "
+    },
+    "signIn": "Criar conta"
+  },
+  "home": {
+    "title": "Promovemos o consumo instantâneo de seus espectadores",
+    "intro": "Criamos a plataforma WebAnd.tv para gerar mais renda e mais entretenimento para seus espectadores em seu canal de TV.",
+    "adapt": {
+      "title": "Adapte seu canal ao espectador de hoje",
+      "description": "O espectador de hoje precisa de estímulos imediatos para acessar tudo o que vê. Oferecemos a ferramenta que seu canal precisa para gerar esses estímulos e aumentar o acesso a suas redes sociais, downloads de aplicativos, interatividade com seu conteúdo, compras on-line e micropagamentos.",
+      "hashtag": "Faça com que seus espectadores participem com um simples clique em suas #hashtags.",
+      "sale": "Aumenta a venda dos produtos do seu anunciante com botões de compra intactos.",
+      "increase": "Receba novas receitas através do nosso sistema de anúncios online.",
+      "micropayment": "Oferece um sistema de micropayment muito mais imediato do que por SMS ou chamada.",
+      "realtime": "Conheça a opinião dos seus espectadores em tempo real.",
+      "idea": "Crie mais entretenimento e novas oportunidades econômicas."
+    },
+    "network": {
+      "description1": "Faça parte de ",
+      "description2": "a única rede de canais com um sistema de micropagamentos e pagamentos online.",
+      "description3": " Onde, com um simples clique, novas receitas são direcionadas ao seu canal e aos anunciantes."
+    },
+    "how_work": {
+      "title": "Como funciona?",
+      "subtitle": "Compartilhe o link WebAnd.tv do seu canal e os microwebsites sincronizados automaticamente serão carregados com o seu conteúdo",
+      "description": "Através de um painel de controle simples, você pode adicionar sites criados por você, sua equipe de desenvolvimento ou de marketing. Eles serão coordenados com o conteúdo da sua transmissão, fornecendo uma nova maneira de interagir com cada um de seus espectadores.",
+      "legal": "* Os logotipos, imagens e marcas são ilustrativos. Eles não têm relação com o WebAnd.tv."
+    },
+    "free": {
+      "title": "Gratuito para o seu canal de TV",
+      "description": "WebAnd.tv não tem custo para o seu canal de TV. Somos apoiados por 5% da receita que você gera graças à nossa plataforma e os 95% restantes são inteiramente para o seu canal de TV."
+    },
+    "contact": {
+      "title": "Comece agora!",
+      "description": "Registre seu canal de TV no WebAnd.tv e acesse o painel de controle."
+    }
+  },
+  "about": {
+    "title": "Quem Somos",
+    "description": "WebAnd.tv é uma startup jovem, com uma equipe de profissionais com mais de 16 anos de experiência no desenvolvimento de aplicativos para empresas no Vale do Silício, na Suíça e na Espanha. Entre eles, desenvolvemos aplicativos para o Facebook, Deloitte e Globallogic ( Empresa de TI com clientes como Samsung, HP, Fox, entre outros.) Essa experiência se volta para o desenvolvimento de ferramentas disponíveis para o seu canal de TV."
+  },
+  "footer": {
+    "privacy": "Privacy",
+    "terms": "Termos e condições",
+    "job": "Emprego",
+    "aboutUs": "Sobre nós",
+    "contactUs": "Entre em contato"
+  }
+}

@@ -110,6 +110,7 @@ a .btn, .btn {
 	box-shadow: 0 0 !important;
 	text-decoration: none !important;
 	padding: 0;
+	display: inline;
 	transition: none !important;
 }
 

@@ -2,20 +2,43 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 import ScrollAnim from 'rc-scroll-anim';
+import { Link } from 'react-router-dom';
+
+import { request } from '../../../lib/https';
 
 import {
 	Row,
 	Col,
 	Form,
 	Button,
+	InputGroup,
+	Alert,
 } from 'react-bootstrap';
 
 import imageDownloadApp from '../../../assets/images/image-download-app.png';
 import imageVote from '../../../assets/images/image-vote.png';
 import imageBuy from '../../../assets/images/image-buy.png';
+import imageChatNow from '../../../assets/images/image-chat-now.png';
+import imageTVBuy from '../../../assets/images/image-tv-buy.png';
+import imageVoteMovies from '../../../assets/images/image-vote-movies.png';
+import imageMore from '../../../assets/images/image-more.png';
+import imageBuyCinema from '../../../assets/images/image-buy-cinema.png';
+import imageVoteOppinion from '../../../assets/images/image-vote-oppinion.png';
+import imageReaction from '../../../assets/images/image-reaction.png';
+import LogoFacebook from '../../../assets/images/logo-facebook.png';
+import LogoGlobalLogic from '../../../assets/images/logo-globallogic.png';
+import LogoDeloitte from '../../../assets/images/logo-deloitte.png';
+
+import Footer from '../core/footer/Footer';
+
+import LoginModal from './modals/LoginModal';
+
+import { Modal } from '../../ui/Theme';
 
 import './Login.css';
 import Carousel from 'nuka-carousel';
+
+import { withTranslation } from 'react-i18next';
 
 const ScrollOverPack = 'div'; //ScrollAnim.OverPack;
 ScrollAnim.scrollScreen.init({ loop: true });
@@ -25,57 +48,30 @@ class Login extends React.Component {
 		super(props);
 		this.state = {
 			updated: false,
-			email: '',
-			password: '',
 			errorMessage: null,
 			boxTiles: [],
 			isTop: true,
+			modalShow: false,
+			children: <div />,
+			terms: false,
+			validated: false,
+			linkname: '',
+			firstname: '',
+			lastname: '',
+			telephone: '',
+			email: '',
+			password: '',
+			confirmPassword: '',
+			signUpResult: false,
 		};
+		this.handleModalClose = this.handleModalClose.bind(this);
+		this.handleModalAccept = this.handleModalAccept.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
+		this.handleInputChange = this.handleInputChange.bind(this);
 	}
 
-	componentWillMount() {
-		const boxTiles =[
-			{
-				icon: 'icon-hashtag',
-				text: 'Haz que tus televidentes participen con tus #hashtags a través de un simple click.',
-				bgColor: 'white',
-			},
-			{
-				icon: 'icon-sale',
-				text: 'Impulsa la venta productos de tus anunciantes con botones de compra intantanea.',
-				bgColor: 'white',
-			},
-			{
-				icon: 'icon-increase-revenue',
-				text: 'Recibe importantes ingresos economicos a traves de un nuevo sistema de anuncios online.',
-				bgColor: 'white',
-			},
-			{
-				icon: 'icon-micro-payment',
-				text: 'Ofrece un sistema de micropago mucho más rápido que por SMS.',
-				bgColor: 'white',
-			},
-			{
-				icon: 'icon-realtime',
-				text: 'Adapta tu canal al televidente de hoy con contenido interactivo.',
-				bgColor: 'white',
-			},
-			{
-				icon: 'icon-idea',
-				text: 'Crea nuevas oportunidades economicas y de entretenimiento.',
-				bgColor: 'white',
-			},
-		];
-		this.setState({boxTiles});
-	}
-
-	componentWillReceiveProps(prevProps) {
-		if ((prevProps.errorMessage !== this.props.errorMessage)
-		&& (this.props.errorMessage !== null)) {
-			this.setState({
-				errorMessage: this.props.errorMessage,
-			});
-		}
+	UNSAFE_componentWillMount() {
+		this.updateBoxTiles();
 	}
 
   componentDidMount() {
@@ -87,10 +83,22 @@ class Login extends React.Component {
     });
   }
 
+	handleModal(children) {
+		this.setState({ modalShow: true, children });
+	}
+
+	handleModalClose() {
+		this.setState({ modalShow: false });
+	}
+
+	handleModalAccept() {
+		this.setState({ modalShow: false });
+	}
+
 	boxTile = (boxTileItem) => {
-		const { icon, text, bgColor } = boxTileItem;
+		const { icon, text, bgColor, id } = boxTileItem;
 		return (
-			<Col xs={12} md={4}>
+			<Col xs={12} md={4} key={id}>
 				<div className='box-tile animate-pop-in delay-1'>
 					<div className='box-tile-content'>
 						<div className='image animate-pop-in delay-1'><i className={`${icon} large`}></i></div>
@@ -123,44 +131,160 @@ class Login extends React.Component {
 			localStorage.setItem('uid', uid);
 			this.props.history.push('/dashboard/');
 		}
+
+		if (prevProps.t !== this.props.t) {
+			this.updateBoxTiles();
+		}
 	}
 
-	onHandleSubmit = (event) => {
+	handleInputChange(event) {
+		const { target } = event;
+		const { name } = target;
+		const value = target.type === 'checkbox' ? target.checked : target.value;
+		this.setState({ [name]: value });
+	}
+
+	handleSubmit = (event) => {
 		event.preventDefault();
-		const { email, password } = this.state;
-		if (email !== '' && password !== '') {
-			this.setState({ updated: true });
-			this.props.userLogin(email, password);
+		event.stopPropagation();
+		
+		const form = event.currentTarget;
+		if (form.checkValidity() === false) {
+			this.setState({ validated: true });
+		} else {
+			const {
+				linkname,
+				firstname,
+				lastname,
+				telephone,
+				email,
+				password,
+			} = this.state;
+
+			// eslint-disable-next-line
+			/*const passwordRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+			if (!passwordRegex.test(password)) {
+				this.setState({ errorMessage: 'Password must contain at least one lowercase character, one uppercase character, one number and one special character' });
+				return false;
+			}
+
+			if (password !== confirmPassword) {
+				this.setState({ errorMessage: 'Passwords have to be the same' });
+				return false;
+			}*/
+
+			const user = {
+				linkname,
+				firstname,
+				lastname,
+				telephone,
+				email,
+				password,
+			};
+			this.handleSignUp(user);
 		}
-	};
+		return true;
+	}
 
-	onEmailChange = (event) => {
-		this.setState({ email: event.target.value });
-	};
+	async handleSignUp(user) {
+		const data = `linkname=${user.linkname}&firstname=${user.firstname}&lastname=${user.lastname}&telephone=${user.telephone}&email=${user.email}&password=${user.password}`;
+		try {
+			const resp = await request('POST', '/signUpLP/', data, {});
+			this.setState({signUpResult: resp.data.result});
+		} catch (err) {
+			console.error(err);
+		}
+	}
 
-	onPasswordChange = (event) => {
-		this.setState({ password: event.target.value });
-	};
-
+	updateBoxTiles() {
+		const { t } = this.props;
+		const boxTiles =[
+			{
+				id: 1,
+				icon: 'icon-hashtag',
+				text: t('home.adapt.hashtag'),
+				bgColor: 'white',
+			},
+			{
+				id: 2,
+				icon: 'icon-sale',
+				text: t('home.adapt.sale'),
+				bgColor: 'white',
+			},
+			{
+				id: 3,
+				icon: 'icon-increase-revenue',
+				text: t('home.adapt.increase'),
+				bgColor: 'white',
+			},
+			{
+				id: 4,
+				icon: 'icon-micro-payment',
+				text: t('home.adapt.micropayment'),
+				bgColor: 'white',
+			},
+			{
+				id: 5,
+				icon: 'icon-realtime',
+				text: t('home.adapt.realtime'),
+				bgColor: 'white',
+			},
+			{
+				id: 6,
+				icon: 'icon-idea',
+				text: t('home.adapt.idea'),
+				bgColor: 'white',
+			},
+		];
+		this.setState({boxTiles});
+	}
 
 	render() {
-		const { boxTiles, isTop } = this.state;
-		console.log('isTop: ', isTop);
+		
+    const { t } = this.props;
+
+		const { 
+			boxTiles,
+			isTop,
+			modalShow,
+			children,
+			terms,
+			validated,
+			linkname,
+			firstname,
+			lastname,
+			telephone,
+			email,
+			password,
+			confirmPassword,
+			signUpResult,
+		} = this.state;
+
+		console.log('this.props: T:', t);
+		
 		return (
 			<div id='login-wrapper' className='login-wrapper animate-pop-in delay-1'>
-				<header className={(!isTop) ? 'header-bg animate-pop-in delay-1' : null}>
+				<header className={(!isTop) ? 'animate-pop-in delay-1' : 'header-bg-remove'}>
 					<div className='logo-webandtv animate-pop-in delay-1'></div>
-					<div>
-						<a href='https://weband.tv/instant/admin/account/'>Login</a>
-					</div>
+					<Button
+						className='btn-link'
+						onClick={() => this.handleModal(
+							<LoginModal
+								handleModalClose={this.handleModalClose}
+								handleModalAccept={this.handleModalAccept}
+							/>,
+						)}
+					>
+						Login
+					</Button>
 				</header>
 				
 				<div className='hero-wrapper bg-waves-purple animate-pop-in delay-1'>
 
 					<div className='hero-title'>
 						<ScrollOverPack always='true'>
-							<h1 class='mega montserrat bold animate-pop-in delay-1'>
-								Impulsa el consumo instantáneo de tus televidentes.
+							<h1 className='mega montserrat bold animate-pop-in delay-1'>
+								{t('home.title')}
 							</h1>
 						</ScrollOverPack>
 					</div>
@@ -178,8 +302,7 @@ class Login extends React.Component {
 							<Row className='section'>
 								<Col>
 									<div className='intro animate-pop-in delay-1'>
-										WebAnd.TV es la plataforma web creada para que tu canal de TV reciba más ingresos 
-										económicos y brinde más entretenimiento a tus televidentes.
+										{t('home.intro')}
 									</div>
 								</Col>
 							</Row>
@@ -188,12 +311,10 @@ class Login extends React.Component {
 								<Col>
 									<ScrollOverPack>
 										<div className='animate-pop-in delay-2'>
-											<h2>Televidentes de hoy</h2>
-											<p>
-												Ofrecemos la herramienta que tu canal necesita para generar los <span className='hight-light'>estimulos a 
-												los televidentes de hoy</span>, que van desde mas participacion en tus redes sociales,
-												mas descargas de la App de tu canal, mas ingresos para ti y tus anunciantes.
-											</p>
+											<h2>{t('home.adapt.title')}</h2>
+											<h3 className='text-muted'>
+												{t('home.adapt.description')}
+											</h3>
 										</div>
 									</ScrollOverPack>
 								</Col>
@@ -208,15 +329,13 @@ class Login extends React.Component {
 										</div>
 									</Col>
 									<Col xs={12} md='6'>
-										<div className='content-half-half right text-white'>
-											<div className='animate-pop-in delay-2'>
-												<h3>Nuevos Ingresos</h3>
-											</div>
+										<div className='content-half-half right'>
 											<ScrollOverPack always='true'>
-											<p className='animate-pop-in delay-3'>
-												Forma parte de <span className='hight-light'>la red más importante de televidentes con un único sistema de micropagos y pagos.
-												</span> Donde con un simple click se destinan nuevos ingresos a tu canal y anunciantes.
-											</p>
+											<h3 className='animate-pop-in delay-3'>
+												{t('home.network.description1')}
+												<span className='hight-light'>{t('home.network.description2')}</span>
+												{t('home.network.description3')}
+											</h3>
 											</ScrollOverPack>
 										</div>
 									</Col>
@@ -228,27 +347,28 @@ class Login extends React.Component {
 								<Row className='section'>
 									<Col>
 									<ScrollOverPack always='true'>
-										<h2 className='animate-pop-in delay-3'>¿Cómo funciona?</h2>
-										
-										<h3 className='hight-light animate-pop-in delay-4'>
-											Es muy simple, comparte el link WebAnd.TV de tu canal
-											y se cargaran microwebsites sincronizados con tu contenido.
+										<h2 className='animate-pop-in delay-3'>{t('home.how_work.title')}</h2>
+										<h3 className='text-muted'>
+											{t('home.how_work.subtitle')}
 										</h3>
 										<p className='animate-pop-in delay-5'>
-											A traves de un sencillo panel de control puedes agregar 
-											microwebsites creados por ti, tu equipo de desarrollo, marketing o comercial. 
-											Estos se muestran a tus televidentes coordinados con tu 
-											contenido estimulando a compras instantaneas y mas entretenimiento.
+											{t('home.how_work.description')}
 										</p>
 										<Carousel>
 											<img src={imageBuy} alt='WebAndTV Buy'/>
 											<img src={imageVote} alt='WebAndTV Vote'/>
 											<img src={imageDownloadApp} alt='WebAndTV Download App'/>
+											<img src={imageChatNow} alt='WebAndTV Chat'/>
+											<img src={imageTVBuy} alt='WebAndTV TV Buy'/>
+											<img src={imageVoteMovies} alt='WebAndTV Vote Movies'/>
+											<img src={imageMore} alt='WebAndTV More'/>
+											<img src={imageBuyCinema} alt='WebAndTV Buy Cinema'/>
+											<img src={imageVoteOppinion} alt='WebAndTV Oppinion'/>
+											<img src={imageReaction} alt='WebAndTV Reaction'/>
 										</Carousel>
-										
-										<p>
-											* Logos, imagenes y marcas son de caracter ilustrativo. No tienen ningun tipo de relacion con WebAnd.TV.
-										</p>
+										<div className='notification-mark'>
+											{t('home.how_work.legal')}
+										</div>
 									</ScrollOverPack>
 									</Col>
 								</Row>
@@ -259,87 +379,196 @@ class Login extends React.Component {
 							<Row className='section animate-pop-in delay-1'>
 								<Col>
 									<h2 className='animate-pop-in delay-2'>
-										Gratis!	<span className='hight-light'>para tu canal o programa de TV</span>
+										{t('home.free.title')}
 									</h2>
 									<ScrollOverPack always='true'>
 									<div className='animate-pop-in delay-3'>
-										WebAnd.TV genera ingresos economicos adicionales a tu canal o programa de TV, de estos, obtienes el 95% y el 5% restante es para el mantenimiento de nuestra plataforma. No tienes que invertir nada.
+										{t('home.free.description')}
 									</div>
 									</ScrollOverPack>
 								</Col>
 							</Row>
+
+							<div className='arrow-div'></div>
 						
-							<div className='bg-waves-purple animate-pop-in delay-1'>
-								<Row className='section text-white '>
-									<Col>
+							<Row className='section animate-pop-in delay-1'>
+								<Col>
 									<Row>
 										<Col>
-											<ScrollOverPack>
-											<h2 className='animate-pop-in delay-2'>COMIENZA AHORA!</h2>
+											<h2 className='animate-pop-in delay-2'>{t('about.title')}</h2>
 											<p className='animate-pop-in delay-3'>
-												Registra tu canal de TV en WebAnd.TV y accede al panel de control. Es facil, rapido y totalmente gratis para tu canal de TV.
+												{t('about.description')}
 											</p>
-											</ScrollOverPack>
-										</Col>								
+										</Col>
 									</Row>
 									<Row>
 										<Col className='animate-pop-in delay-4'>
-											<Form>
-												<Form.Group>
-													<Form.Label>Canal de TV</Form.Label>
-													<Form.Control type='text' placeholder='name@example.com' />
-												</Form.Group>
-												<Form.Group>
-													<Form.Label>Country</Form.Label>
-													<Form.Control type='text' placeholder='name@example.com' />
-												</Form.Group>
-												<Form.Group>
-													<Form.Label>Estado/Provincia</Form.Label>
-													<Form.Control type='text' placeholder='' />
-												</Form.Group>
-												<Form.Group>
-													<Form.Label>City</Form.Label>
-													<Form.Control type='text' placeholder='Ciudad' />
-												</Form.Group>
-												<Form.Group>
-													<Form.Label>Nombre</Form.Label>
-													<Form.Control type='text' placeholder='Nombre' />
-												</Form.Group>
-												<Form.Group>
-													<Form.Label>Apellido</Form.Label>
-													<Form.Control type='text' placeholder='Apellido' />
-												</Form.Group>
-												<Form.Group>
-													<Form.Label>Telefono</Form.Label>
-													<Form.Control type='text' placeholder='ej: +1 000000000' />
-												</Form.Group>
-												<Form.Group>
-													<Form.Label>Email</Form.Label>
-													<Form.Control type='email' placeholder='name@example.com' />
-												</Form.Group>
-												<Form.Group>
-													<Form.Label>Password</Form.Label>
-													<Form.Control type='password' placeholder='Mayor a 8 caracteres' />
-												</Form.Group>
-												<Form.Group>
-													<Form.Label>Repetir Password</Form.Label>
-													<Form.Control type='password' placeholder='Repite tu password' />
-												</Form.Group>
-												<div>
-													<Button variant='secondary'>Crear perfil de mi canal</Button>
-												</div>
-											</Form>
-										</Col>								
+											<img src={LogoFacebook} alt='Facebook' className='logo-image'/>
+										</Col>
+										<Col className='animate-pop-in delay-6'>
+											<img src={LogoDeloitte} alt='Deloitte' className='logo-image'/>
+										</Col>
+										<Col className='animate-pop-in delay-5'>
+											<img src={LogoGlobalLogic} alt='GlobalLogic' className='logo-image'/>
+										</Col>
 									</Row>
+								</Col>
+							</Row>
+
+							<div className='bg-waves-purple animate-pop-in delay-1'>
+								<Row className='section text-white '>
+									<Col>
+										<Row>
+											<Col>
+												<ScrollOverPack>
+												<h2 className='animate-pop-in delay-2'>{t('home.contact.title')}</h2>
+												<p className='animate-pop-in delay-3'>
+													{t('home.contact.description')}
+												</p>
+												</ScrollOverPack>
+											</Col>								
+										</Row>
+										<Row>
+											<Col className='animate-pop-in delay-4'>
+												{(signUpResult) ? <Alert variant='success'>Tu solicitud se ha enviado correctamente, un representante estara contactando para brindarte el acceso a tu cuenta y asesoramiento personalisado.</Alert> : 
+												<Form
+													className='call-to-action'
+													noValidate
+													validated={validated}
+													onSubmit={(event) => this.handleSubmit(event)}
+												>
+													<Form.Group controlId='validationCustomUsername'>
+														<InputGroup>
+															<InputGroup.Prepend>
+																<InputGroup.Text id='inputGroupPrepend'>weband.tv/</InputGroup.Text>
+															</InputGroup.Prepend>
+															<Form.Control
+																type='text'
+																placeholder={t('general.linkname')}
+																aria-describedby='inputGroupPrepend'
+																name='linkname'
+																value={linkname}
+																onChange={this.handleInputChange}
+																required
+															/>
+														</InputGroup>
+													</Form.Group>
+													<Form.Row>
+														<Form.Group as={Col} xs={12} md={6}>
+															<Form.Control
+																type='text'
+																placeholder={t('general.firstname')}
+																name='firstname'
+																value={firstname}
+																onChange={this.handleInputChange}
+																required
+															/>
+														</Form.Group>
+														<Form.Group as={Col} xs={12} md={6}>
+															<Form.Control
+																type='text'
+																placeholder={t('general.lastname')}
+																name='lastname'
+																value={lastname}
+																onChange={this.handleInputChange}
+																required
+															/>
+														</Form.Group>
+													</Form.Row>
+													<Form.Group>
+														<Form.Control
+															type='text'
+															placeholder={t('general.telephone')}
+															name='telephone'
+															value={telephone}
+															onChange={this.handleInputChange}
+															required
+														/>
+													</Form.Group>
+													<Form.Group>
+														<Form.Control
+															type='email'
+															placeholder='Email'
+															name='email'
+															value={email}
+															onChange={this.handleInputChange}
+															required
+														/>
+													</Form.Group>
+													<Form.Row>
+														<Form.Group as={Col} xs={12} md={6}>
+															<Form.Control
+																type='password'
+																placeholder='Password'
+																name='password'
+																value={password}
+																onChange={this.handleInputChange}
+																required
+															/>
+														</Form.Group>
+														<Form.Group as={Col} xs={12} md={6}>
+															<Form.Control
+																type='password'
+																placeholder='Repetir Password'
+																name='confirmPassword'
+																value={confirmPassword}
+																onChange={this.handleInputChange}
+																required
+															/>
+														</Form.Group>
+													</Form.Row>
+													<Form.Group
+														controlId='termsAndCondition'
+														className='d-flex'
+													>
+														<Form.Check
+															type='checkbox'
+															checked={!!(terms)}
+															name='terms'
+															value={terms}
+															onChange={this.handleInputChange}
+															required
+														/>
+														<div className='terms-wrapper'>
+															<span>{t('general.terms.text1')}</span>
+															<Link to='////weband.tv/terms' target='_blank'>
+																&nbsp;{t('footer.terms')}
+															</Link>
+															<span> {t('general.terms.text2')} </span>
+															<Link to='////weband.tv/privacy' target='_blank'>
+																{t('footer.privacy')}
+															</Link>
+														</div>
+													</Form.Group>
+													<div className='d-flex justify-content-end'>
+														<Button
+															type='submit'
+															variant='success'
+															className='btn-large'
+														>
+															{t('general.signIn')}
+														</Button>
+													</div>
+												</Form>
+											}
+											</Col>
+										</Row>
 									</Col>
 								</Row>
 					  	</div>
-						
-						
-
 					</div>
 
 				</div>
+
+				<Footer />
+
+				<Modal
+					show={modalShow}
+					handleClose={this.handleModalClose}
+					handleAccept={this.handleModalAccept}
+				>
+					{children}
+				</Modal>
 			</div>
 		);
 	}
@@ -358,4 +587,4 @@ Login.defaultProps = {
 	userLogin: () => null,
 };
 
-export default Login;
+export default withTranslation()(Login);

@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import '../ui/Theme.css';
 import Router from '../router/Router';
 
 function App() {
 	return (
-		<div className='App'>
-			<Router />
-		</div>
+		<Suspense fallback="loading">
+			<div className='App'>
+				<Router />
+			</div>
+		</Suspense>
 	);
 }
 

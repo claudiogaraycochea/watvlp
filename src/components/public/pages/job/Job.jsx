@@ -155,7 +155,6 @@ class Job extends Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
-    this.textFormat = this.textFormat.bind(this);
   }
 
 	handleInputChange(event) {
@@ -199,17 +198,6 @@ class Job extends Component {
 		} catch (err) {
 			console.error(err);
 		}
-  }
-  
-  textFormat(data) {
-    const dataResult = data.map(function(item) {
-      return (
-        <div style='border:1px solid red'>
-        {item}
-        </div>
-      );
-    })
-    return dataResult;
   }
 
   render () {

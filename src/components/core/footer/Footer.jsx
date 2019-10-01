@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { withTranslation } from 'react-i18next';
 
 class Footer extends Component {
 	constructor(props) {
@@ -9,6 +10,7 @@ class Footer extends Component {
 	}
 
 	render() {
+		const { t } = this.props;
 		return (
 			<Container>
 				<Row>
@@ -17,11 +19,11 @@ class Footer extends Component {
 							<span className='label-text space'>
 								{` Copyright © ${new Date().getFullYear()} WebAnd.TV`}
 							</span>
-							<Link to='../terms' onClick={this.openTerms} className='space'>Términos y Condiciones</Link>
-							<Link to='../privacy' className='space'>Privacidad</Link>
-							<Link to='/aboutUs' className='space'>Acerca de</Link>
-							<Link to='/job' className='space'>Empleo</Link>
-							<Link to='/contactUs'>Contáctenos</Link>
+							<Link to='../terms' onClick={this.openTerms} className='space'>{t('footer.terms')}</Link>
+							<Link to='../privacy' className='space'>{t('footer.privacy')}</Link>
+							<Link to='/aboutUs' className='space'>{t('footer.aboutUs')}</Link>
+							<Link to='/job' className='space'>{t('footer.job')}</Link>
+							<Link to='/contactUs'>{t('footer.contactUs')}</Link>
 						</div>
 					</Col>
 				</Row>
@@ -30,4 +32,4 @@ class Footer extends Component {
 	}
 }
 
-export default Footer;
+export default withTranslation()(Footer);

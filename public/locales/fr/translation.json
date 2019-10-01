@@ -1,0 +1,57 @@
+{
+  "general": {
+    "linkname": "Nom du lien",
+    "firstname": "Prenom",
+    "lastname": "Nom",
+    "telephone": "Téléphone",
+    "terms": {
+      "text1": "Accepter le ",
+      "text2": " et "
+    },
+    "signIn": "Créer un Compte"
+  },
+  "home": {
+    "title": "Nous encourageons la consommation instantanée de vos téléspectateurs",
+    "intro": "Nous avons créé la plate-forme WebAnd.tv afin de générer plus de revenus et plus de divertissement pour vos téléspectateurs sur votre chaîne de télévision.",
+    "adapt": {
+      "title": "Adaptez votre chaîne au spectateur d'aujourd'hui",
+      "description": "Le téléspectateur actuel a besoin de stimuli immédiats pour accéder à tout ce qu'il voit. Nous offrons à votre chaîne l'outil dont elle a besoin pour générer ces stimuli et améliorer l'accès à vos réseaux sociaux, aux téléchargements d'applications, à l'interactivité avec votre contenu, achats en ligne et micropaiements.",
+      "hashtag": "Invitez vos téléspectateurs à participer en un clic à votre #hashtags.",
+      "sale": "Augmente la vente des produits de votre annonceur avec des boutons d'achat intacts.",
+      "increase": "Recevez de nouveaux revenus grâce à notre système de publicité en ligne.",
+      "micropayment": "Offre un système de micropaiement beaucoup plus immédiat que par SMS ou appel.",
+      "realtime": "Connaissez l'opinion de vos téléspectateurs en temps réel.",
+      "idea": "Créer plus de divertissement et de nouvelles opportunités économiques."
+    },
+    "network": {
+      "description1": "Forma parte de ",
+      "description2": "la unica red de canales con un sistema de micropagos y pagos online.",
+      "description3": " Donde con un simple click se destinan nuevos ingresos a tu canal y anunciantes."
+    },
+    "how_work": {
+      "title": "Comment ça marche?",
+      "subtitle": "Partagez le lien WebAnd.tv de votre chaîne et des microwebsites synchronisés automatiquement seront chargés avec votre contenu",
+      "description": "Grâce à un simple panneau de commande, vous pouvez ajouter des microwebsites créés par vous-même, votre équipe de développement ou de marketing. Ils seront coordonnés avec le contenu de votre transmission, ce qui vous offrira un nouveau moyen d'interagir avec chacun de vos contacts. téléspectateurs.",
+      "legal": "* Les logos, images et marques sont des illustrations. Ils n'ont aucun lien avec WebAnd.tv."
+    },
+    "free": {
+      "title": "Gratuit pour votre chaîne de télévision",
+      "description": "WebAnd.tv n'a aucun coût pour votre chaîne de télévision. Nous bénéficions de 5% des revenus que vous générez grâce à notre plate-forme et les 95% restants sont entièrement destinés à votre chaîne de télévision."
+    },
+    "contact": {
+      "title": "Start Now!",
+      "description": "Enregistrez votre chaîne de télévision dans WebAnd.tv et accédez au panneau de configuration."
+    }
+  },
+  "about": {
+    "title": "À propos de nous",
+    "description": "WebAnd.tv est une jeune startup qui compte sur plus de 16 ans d'expérience dans le développement d'applications pour des entreprises de la Silicon Valley, de la Suisse et de l'Espagne. Parmi celles-ci, nous avons développé des applications pour Facebook, Deloitte et Globallogic ( Société informatique avec des clients tels que Samsung, HP, Fox, entre autres.) Cette expérience concerne le développement d’outils disponibles pour votre chaîne de télévision."
+  },
+  "footer": {
+    "privacy": "Confidentialité",
+    "terms": "Termes et conditions",
+    "job": "Emploi",
+    "aboutUs": "À propos de nous",
+    "contactUs": "Contactez-nous"
+  }
+}

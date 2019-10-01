@@ -1,0 +1,57 @@
+{
+  "general": {
+    "linkname": "Linkname",
+    "firstname": "Firstname",
+    "lastname": "Lastname",
+    "telephone": "Telephone",
+    "terms": {
+      "text1": "Accept ",
+      "text2": " and "
+    },
+    "signIn": "Sign In"
+  },
+  "home": {
+    "title": "We promote the instantaneous consumption of your viewers",
+    "intro": "We created the WebAnd.tv platform in order to generate more income and more entertainment for your viewers on your TV channel.",
+    "adapt": {
+      "title": "Adapt your channel to today's viewer",
+      "description": "Today's viewer needs immediate and stimuli to access everything he sees. We offer the tool that your channel needs to generate these stimuli and boost access to your social networks, Apps downloads, interactivity with your content, online shopping and micropayments.",
+      "hashtag": "Make your viewers participate with a simple click to your #hashtags.",
+      "sale": "Boost the sale of your advertisers' products with intact purchase buttons.",
+      "increase": "Receive new revenue through our online ad system.",
+      "micropayment": "It offers a micropayment system much more immediate than by SMS or call.",
+      "realtime": "Know the opinion of your viewers in real time.",
+      "idea": "Create more entertainment and new economic opportunities."
+    },
+    "network": {
+      "description1": "Be part of ",
+      "description2": "the only network of channels with a micropayment system and online payments.",
+      "description3": " Where with a simple click new revenue goes to your channel and advertisers."
+    },
+    "how_work": {
+      "title": "How Work?",
+      "subtitle": "Share the link WebAnd.tv of your channel and automatically synchronized microwebsites will be loaded with your content",
+      "description": "Through a simple control panel you can add microwebsites created by you, your development or marketing team. They will be shown coordinated with the content of your broadcast, providing a new way to interact with each of your viewers.",
+      "legal": "* Logos, images and brands are illustrative. They have no relationship with WebAnd.tv."
+    },
+    "free": {
+      "title": "Free for your TV channel",
+      "description": "WebAnd.tv has no cost for your TV channel. We support ourselves with 5% of the income you generate thanks to our platform and the remaining 95% is totally for your TV channel."
+    },
+    "contact": {
+      "title": "Starts Now!",
+      "description": "Register your TV channel in WebAnd.tv and access the control panel."
+    }
+  },
+  "about": {
+    "title": "About Us",
+    "description": "WebAnd.tv is a young startup that has a team of professionals with more than 16 years of experience developing applications for companies in Silicon Valley, Switzerland and Spain. Among them we have developed applications for Facebook, Deloitte and GlobalLogic (IT company with clients such as Samsung, HP, Fox, among others). This experience turns to the development of tools available for your TV channel."
+  },
+  "footer": {
+    "privacy": "Privacy",
+    "terms": "Terms and Conditions",
+    "job": "Job",
+    "aboutUs": "About Us",
+    "contactUs": "Contact Us"
+  }
+}
