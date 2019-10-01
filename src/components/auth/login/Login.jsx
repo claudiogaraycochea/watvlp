@@ -353,50 +353,62 @@ class Login extends React.Component {
 							<div className='animate-pop-in delay-1'>
 								<Row className='section'>
 									<Col>
-									<ScrollOverPack always='true'>
-										<h2 className='animate-pop-in delay-3'>{t('home.how_work.title')}</h2>
-										<h3 className='text-muted'>
-											{t('home.how_work.subtitle')}
-										</h3>
-										<p className='animate-pop-in delay-5'>
-											{t('home.how_work.description')}
-										</p>
-										<Slider {...settings}>
-											<div>
-												<img src={imageBuy} alt='WebAndTV Buy' className='image-slider'/>
-											</div>
-											<div>
-												<img src={imageVote} alt='WebAndTV Vote' className='image-slider'/>
-											</div>
-											<div>
-												<img src={imageDownloadApp} alt='WebAndTV Download App' className='image-slider'/>
-											</div>
-											<div>
-												<img src={imageChatNow} alt='WebAndTV Chat' className='image-slider'/>
-											</div>
-											<div>
-												<img src={imageTVBuy} alt='WebAndTV TV Buy' className='image-slider'/>
-											</div>
-											<div>
-												<img src={imageVoteMovies} alt='WebAndTV Vote Movies' className='image-slider'/>
-											</div>
-											<div>
-												<img src={imageMore} alt='WebAndTV More' className='image-slider'/>
-											</div>
-											<div>
-												<img src={imageBuyCinema} alt='WebAndTV Buy Cinema' className='image-slider'/>
-											</div>
-											<div>
-												<img src={imageVoteOppinion} alt='WebAndTV Oppinion' className='image-slider'/>
-											</div>
-											<div>
-												<img src={imageReaction} alt='WebAndTV Reaction' className='image-slider'/>
-											</div>
-										</Slider>
-										<div className='notification-mark'>
-											{t('home.how_work.legal')}
-										</div>
-									</ScrollOverPack>
+										<Row>
+											<Col>
+												<h2 className='animate-pop-in delay-3'>{t('home.how_work.title')}</h2>
+												<h3 className='text-muted'>
+													{t('home.how_work.subtitle')}
+												</h3>
+												<p className='animate-pop-in delay-5'>
+													{t('home.how_work.description')}
+												</p>										
+											</Col>
+										</Row>
+										<Row>
+											<Col>
+												<div className='image-slider-wrapper'>
+													<Slider {...settings}>
+														<div>
+															<img src={imageBuy} alt='WebAndTV Buy' className='image-slider'/>
+														</div>
+														<div>
+															<img src={imageVote} alt='WebAndTV Vote' className='image-slider'/>
+														</div>
+														<div>
+															<img src={imageDownloadApp} alt='WebAndTV Download App' className='image-slider'/>
+														</div>
+														<div>
+															<img src={imageChatNow} alt='WebAndTV Chat' className='image-slider'/>
+														</div>
+														<div>
+															<img src={imageTVBuy} alt='WebAndTV TV Buy' className='image-slider'/>
+														</div>
+														<div>
+															<img src={imageVoteMovies} alt='WebAndTV Vote Movies' className='image-slider'/>
+														</div>
+														<div>
+															<img src={imageMore} alt='WebAndTV More' className='image-slider'/>
+														</div>
+														<div>
+															<img src={imageBuyCinema} alt='WebAndTV Buy Cinema' className='image-slider'/>
+														</div>
+														<div>
+															<img src={imageVoteOppinion} alt='WebAndTV Oppinion' className='image-slider'/>
+														</div>
+														<div>
+															<img src={imageReaction} alt='WebAndTV Reaction' className='image-slider'/>
+														</div>
+													</Slider>
+												</div>
+											</Col>
+										</Row>
+										<Row>
+											<Col>
+												<div className='notification-mark'>
+													{t('home.how_work.legal')}
+												</div>		
+											</Col>
+										</Row>
 									</Col>
 								</Row>
 							</div>

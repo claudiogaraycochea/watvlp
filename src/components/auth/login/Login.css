@@ -349,8 +349,22 @@ p {
   padding: 20px;
 }
 
+.image-slider-wrapper {
+  width: 84%;
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .image-slider {
   width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.slick-dots {
+  bottom: -50px !important;
 }
 
 .profile-channel {
