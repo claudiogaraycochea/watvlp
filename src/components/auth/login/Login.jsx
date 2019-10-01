@@ -38,7 +38,7 @@ import LoginModal from './modals/LoginModal';
 import { Modal } from '../../ui/Theme';
 
 import './Login.css';
-import Carousel from 'nuka-carousel';
+import Slider from "react-slick";
 
 import { withTranslation } from 'react-i18next';
 
@@ -262,8 +262,14 @@ class Login extends React.Component {
 			signUpResult,
 		} = this.state;
 
-		console.log('this.props: T:', t);
-		
+		const settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1
+		};
+
 		return (
 			<div id='login-wrapper' className='login-wrapper animate-pop-in delay-1'>
 				<header className={(!isTop) ? 'animate-pop-in delay-1' : 'header-bg-remove'}>
@@ -355,18 +361,38 @@ class Login extends React.Component {
 										<p className='animate-pop-in delay-5'>
 											{t('home.how_work.description')}
 										</p>
-										<Carousel>
-											<img src={imageBuy} alt='WebAndTV Buy'/>
-											<img src={imageVote} alt='WebAndTV Vote'/>
-											<img src={imageDownloadApp} alt='WebAndTV Download App'/>
-											<img src={imageChatNow} alt='WebAndTV Chat'/>
-											<img src={imageTVBuy} alt='WebAndTV TV Buy'/>
-											<img src={imageVoteMovies} alt='WebAndTV Vote Movies'/>
-											<img src={imageMore} alt='WebAndTV More'/>
-											<img src={imageBuyCinema} alt='WebAndTV Buy Cinema'/>
-											<img src={imageVoteOppinion} alt='WebAndTV Oppinion'/>
-											<img src={imageReaction} alt='WebAndTV Reaction'/>
-										</Carousel>
+										<Slider {...settings}>
+											<div>
+												<img src={imageBuy} alt='WebAndTV Buy' className='image-slider'/>
+											</div>
+											<div>
+												<img src={imageVote} alt='WebAndTV Vote' className='image-slider'/>
+											</div>
+											<div>
+												<img src={imageDownloadApp} alt='WebAndTV Download App' className='image-slider'/>
+											</div>
+											<div>
+												<img src={imageChatNow} alt='WebAndTV Chat' className='image-slider'/>
+											</div>
+											<div>
+												<img src={imageTVBuy} alt='WebAndTV TV Buy' className='image-slider'/>
+											</div>
+											<div>
+												<img src={imageVoteMovies} alt='WebAndTV Vote Movies' className='image-slider'/>
+											</div>
+											<div>
+												<img src={imageMore} alt='WebAndTV More' className='image-slider'/>
+											</div>
+											<div>
+												<img src={imageBuyCinema} alt='WebAndTV Buy Cinema' className='image-slider'/>
+											</div>
+											<div>
+												<img src={imageVoteOppinion} alt='WebAndTV Oppinion' className='image-slider'/>
+											</div>
+											<div>
+												<img src={imageReaction} alt='WebAndTV Reaction' className='image-slider'/>
+											</div>
+										</Slider>
 										<div className='notification-mark'>
 											{t('home.how_work.legal')}
 										</div>

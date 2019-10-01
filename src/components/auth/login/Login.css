@@ -349,6 +349,10 @@ p {
   padding: 20px;
 }
 
+.image-slider {
+  width: 100%;
+}
+
 .profile-channel {
   background-image: url(../../../assets/images/image-revenue.svg);
   background-size: contain;
